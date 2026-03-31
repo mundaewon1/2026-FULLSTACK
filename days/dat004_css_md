@@ -7,9 +7,20 @@
 5. 밑줄 : text-decoration
 6. 글꼴 : font-fmaily
 7. 굵게 : font-weight
-8. 가로 : width
+8. 가로 : width 세로 : height
 9. 바깥쪽여백 : margin
 10. 안쪽여백 : padding
 11. 선 : border
 12. 둥근모서리 : border-radius
 13. 그림자효과 : box-shadow
+
+- 2. java
+  1. 자바의 자료형 분류(  기본형 / 참조형  )
+  2. 기본형 : 값
+    2-1 논리형 : 예) boolean  - true/false (1byte)   
+    2-2 정수형 :  byte - short - int - long
+    2-3 실수형 :  float - double
+    2-4 문자형 :  char
+  3. 자동형변환은 (  boolean  )  빼고  (
+    byte < short / char(2byte) < int < long < float < double
+      ) 기본형
