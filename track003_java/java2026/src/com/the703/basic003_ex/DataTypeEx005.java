@@ -24,7 +24,7 @@ public class DataTypeEx005 {
 		System.out.println();
 		
 		total=kor+eng+math;
-		avg=total/3.0;
+		avg=total/3.0; //3f
 		
 		System.out.println("총점 : "+total+"\n평균 : "+avg);
 		System.out.print  ("총점 : "+total+"\n평균 : "+avg+"\n");
