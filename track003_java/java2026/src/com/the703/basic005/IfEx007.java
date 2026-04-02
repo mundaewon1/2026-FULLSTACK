@@ -1,4 +1,4 @@
-package com.the703.basic005;
+package com.the703.basic005;//
 
 import java.util.Scanner;
 
