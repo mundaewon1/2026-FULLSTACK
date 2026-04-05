@@ -28,9 +28,9 @@ public class IfEx008 {
 		// if (avg>= 60 && kor>=40 && eng>=40 && math>=40){hab="합격";}
 		// else {hab="불합격";}
 		//	 	 if (avg>90) {b="수";}
-		//	else if (avg>90) {b="우";}
-		//	else if (avg>90) {b="미";}
-		//	else if (avg>90) {b="양";}
+		//	else if (avg>80) {b="우";}
+		//	else if (avg>70) {b="미";}
+		//	else if (avg>60) {b="양";}
 		
 		//출력
 		System.out.println("============================================================================== ");
