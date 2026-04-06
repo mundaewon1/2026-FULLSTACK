@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class BankProjectV1 {
 
 	public static void main(String[] args) {
-		int a = -1; int in = 0;
-		int id = -1; int pass = -1; int balance = -1;
+		int a = 0; int in = 0; int out = 0; char in2='\u0000';
+		int id = 0; int pass = 0; int balance = 0;
 		Scanner sc = new Scanner(System.in);
 		
 		
@@ -31,34 +31,52 @@ public class BankProjectV1 {
 				 }
 			else if (a==2) {System.out.println("조회기능입니다.");
 				// 변수
-				int tid=-1, tpass=-1;
+				int tid=0, tpass=0;
 				// 입력 ( 임시공간에 아이디와 비번입력받기 )
 				 System.out.print("ID   입력 > "); tid=sc.nextInt();
 				 System.out.print("PASS 입력 > "); tpass=sc.nextInt();
 				//              [1]ID   입력 > std11
 				//				[2]PASS 입력 > 11
 				// 처리 + 출력
-				 if(id==tid && pass==tpass) {System.out.println("잔액 : "+balance);}
+				 if(id==tid && pass==tpass) {System.out.println("ID : "+id+"\n잔액 : "+(balance));}
 				 else                       {System.out.println("비밀번호를 확인해주세요!");}
 				//   9번째 줄에 있는 아이디와 임시아이디가 같고, 9번째 줄에 있는 비번과 임시 비번이 같으면 정보출력
 				//   아니라면 비밀번호를 확인해주세요!
 			}
 			else if (a==3) {System.out.println("입금기능입니다.");
-			 	System.out.print("ID   입력 > "); id=sc.nextInt();
-			    System.out.print("PASS 입력 > "); pass=sc.nextInt();
-			 	System.out.print("입금 금액  > "); in=sc.nextInt();
-			 	if(in>0) {System.out.println("입금 완료");
-			 			  System.out.println("통장잔고 : "+(balance+in));}
-			 	else     {System.out.println("다시 확인해주세요");}
+				int tid=0, tpass=0;
+			 	System.out.print("ID   입력 > "); tid=sc.nextInt();
+			    System.out.print("PASS 입력 > "); tpass=sc.nextInt();
+			 	if(id==tid && pass==tpass) {System.out.print("입금 금액 입력 > ");in=sc.nextInt();}
+			 	else     {System.out.println("계정을 다시 확인해주세요");}
+			 	if(id==tid && pass==tpass && in>0) {balance+=in; System.out.println(in+"원 입금 완료");
+			 		System.out.println("잔액 : "+balance);
+			}}
+			else if (a==4) {System.out.println("출금기능입니다.");
+				int tid=0, tpass=0;
+			 	System.out.print("ID   입력 > "); tid=sc.nextInt();
+			    System.out.print("PASS 입력 > "); tpass=sc.nextInt();
+				if(id==tid && pass==tpass) {System.out.println("출금 금액 입력 > ");out=sc.nextInt();}
+			    else     {System.out.println("계정을 다시 확인해주세요");}
+				if(id==tid && pass==tpass && out>0) {balance-=out; System.out.println(out+"원 출금 완료");
+		 			System.out.println("잔액 : "+balance);}
+				 }
+			else if (a==5) {System.out.println("삭제기능입니다.");
+				int tid=0, tpass=0;
+			 	System.out.print("ID   입력 > "); tid=sc.nextInt();
+			    System.out.print("PASS 입력 > "); tpass=sc.nextInt();
+				if(id==tid && pass==tpass)    {System.out.println("계좌를 삭제하시겠습니까? (Y/N)");in2=sc.next().charAt(0);}
+			    else     {System.out.println("계정을 다시 확인해주세요");}
+					 if(in2=='Y' || in2=='y') {id=0;pass=0;}
+				else if(in2=='N' || in2=='n') {System.out.println("처음으로 돌아갑니다.");}
+				else {System.out.println("Y/N가 아닙니다.");}
 			}
-			else if (a==4) {System.out.println("출금기능입니다.");}
-				 
-			else if (a==5) {System.out.println("삭제기능입니다.");}
 			else if (a==9) {System.out.println("종료기능입니다."); {break;}}	
-			}
+			
 		
 		
-	}
+	}		
+}
 }
 /*
  Q1. 메뉴판나오게 만들고 사용자가 메뉴 선택시
