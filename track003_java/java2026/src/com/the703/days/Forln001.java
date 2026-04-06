@@ -2,22 +2,24 @@ package com.the703.days;
 
 import java.util.Scanner;
 
-public class Day008 {
+public class Forln001 {
 
 	public static void main(String[] args) {
 		//변수
-		int kor=-1,eng=-1,math=-1,total=0; double avg=0;
+		int kor=102,eng=102,math=102,total=0; double avg=0;
 		String hak,hab="합격",level="가",jang="";
 		Scanner sc = new Scanner(System.in);
 		//입력
 		System.out.print("학번 입력 > "); hak=sc.next();
 		
-		for(;;) {System.out.print("국어점수 입력 > ");kor=sc.nextInt();
-		System.out.print("영어점수 입력 > ");eng=sc.nextInt();
-		System.out.print("수학점수 입력 > ");math=sc.nextInt();
-		if( kor  >=0 && kor  <=100 &&
-			eng  >=0 && eng  <=100 &&
-			math >=0 && math <=100) {break;}}
+		for(;;) {
+			if(kor<0 || kor>100)
+		{System.out.print("국어점수 입력 > ");kor=sc.nextInt();continue;}
+			if(eng<0 || eng>100)
+		{System.out.print("영어점수 입력 > ");eng=sc.nextInt();continue;}
+			if(math<0 || math>100)
+		{System.out.print("수학점수 입력 > ");math=sc.nextInt();continue;}{break;}
+		}
 
 		total=kor+eng+math;
 		avg=total/3.0;
