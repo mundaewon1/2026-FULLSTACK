@@ -2,7 +2,7 @@ package com.the703.days;
 
 import java.util.Scanner;
 
-public class Forln001 {
+public class Forln2 {
 
 	public static void main(String[] args) {
 		//변수
@@ -17,12 +17,12 @@ public class Forln001 {
 		
 		for(;;) {
 			if(kor<0 || kor>100)
-		{System.out.print("국어점수 입력 > ");kor=sc.nextInt();continue;}
-			if(eng<0 || eng>100)
-		{System.out.print("영어점수 입력 > ");eng=sc.nextInt();continue;}
-			if(math<0 || math>100)
-		{System.out.print("수학점수 입력 > ");math=sc.nextInt();continue;}{break;}
-		}
+		{System.out.print("국어점수 입력 > ");kor=sc.nextInt();}
+			else if(eng<0 || eng>100)
+		{System.out.print("영어점수 입력 > ");eng=sc.nextInt();}
+			else if( !(math>=0 && math<=100) )
+		{System.out.print("수학점수 입력 > ");math=sc.nextInt();}
+			else {break;}}
 		//처리 - 연산자 먼저() 값(++,--,산술) 비교(>,<) 조건(%%, ||) 대입(=)
 		//    - 제어문 (#if/ #switch) 반복(#for/while/do while)
 		total=kor+eng+math;  // 1. 총점 구하기
