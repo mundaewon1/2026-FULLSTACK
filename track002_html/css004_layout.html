@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>004. layout - float </title>
+    <style>
+     * {margin:0; padding:0;}
+    body {font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            background-image:linear-gradient(135deg,rgb(192, 207, 137),rgb(39, 98, 209));
+    }
+    h3{ border-left:10px solid black;
+    border-bottom:1px solid black;
+    margin:30px 0; padding-left:20px;
+    }
+    .container{width:50%; margin:50px auto;
+    background-color:rgb(132, 111, 187); padding:20px; box-shadow:0 0 10px rgba(0,0,0,0.5);}
+    
+    .item { background-color:#333; color:white; padding:10px;}
+    .f1{float:left; background-color:aqua}
+    .f2{float:right; background-color:blue}
+    .f3{clear:both;}
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <h3>1. block  vs  inline</h3>
+        <dl>
+            <dt>block</dt>
+            <dd> width o , 줄바꿈 o </dd>
+            <dt>inline</dt>
+            <dd> width x , 줄바꿈 x </dd>
+        </dl>
+    </div>
+
+    <div class="container">
+        <h3>2. 배치</h3>
+        <ul>
+            <li>float : 왼쪽이나 오른쪽에 옆에 붙이기 (끊기-clear:both)</li>
+            <li>position : 정확한 자리를 정해서 붙이기(좌표)</li>
+            <li>display : 블록에 줄서기 ,속성바꾸기</li>
+        </ul>
+    </div>
+
+    <div class="container f">
+        <h3>3. 배치(1) - float</h3>
+        <p class="item f1">LEFT<span>(왼쪽)</span></p>
+        <p class="item f2">RIGHT<span>(오른쪽)</span></p>
+        <p class="item f3">float속성끊기 clear:both / overflow:hidden </p>
+    </div>
+</body>
+</html>
+
+<!-- css004_layout.html  -->
