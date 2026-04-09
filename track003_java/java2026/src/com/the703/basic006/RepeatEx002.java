@@ -4,6 +4,7 @@ public class RepeatEx002 {
 
 	public static void main(String[] args) {
 		int hab=0; int hab2=0; int hab3=0;
+		
 		for(int i=1;i<=10;i++) {if( i%3==0) {hab=hab+i;}}
 		System.out.println(hab);
 		
@@ -14,11 +15,8 @@ public class RepeatEx002 {
 		int i1=1;
 		do {if(i1%3==0) {hab3=hab3+i1;}i1++;} while(i1<=10);
 		System.out.println(hab3);
-			
-		
 
 	}
-
 }
 /*
 for , while , do while 3가지 버젼으로 
