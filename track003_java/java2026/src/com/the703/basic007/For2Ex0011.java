@@ -29,9 +29,12 @@ public class For2Ex0011 {
 		int b=1;
 		while(b<=6) {
 		int a = 1; while(a<=6) {if(6==b+a) {System.out.println(b+"+"+a+"="+6);}a++;};b++;}	
+		System.out.println();
 		
-		
-		int a = 1; do {if(6==b+a) {System.out.println(b+"+"+a+"="+6);}a++; while(a<=6);
+		int b1=1;
+		do {
+		int a = 1; while(a<=6) {if(6==b1+a) {System.out.println(b1+"+"+a+"="+6);}a++;};b1++;} while(b1<=6);
+
 
 //		if(b==2+1) {System.out.println(2+"+"+1+"="+b);}
 //		if(b==2+2) {System.out.println(2+"+"+2+"="+b);}
