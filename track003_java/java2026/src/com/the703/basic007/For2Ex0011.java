@@ -8,12 +8,12 @@ public class For2Ex0011 {
 
 		Scanner sc = new Scanner(System.in);
 		
-//		if(b==1+1) {System.out.println(1+"+"+1+"="+b);}
-//		if(b==1+2) {System.out.println(1+"+"+2+"="+b);}
-//		if(b==1+3) {System.out.println(1+"+"+3+"="+b);}
-//		if(b==1+4) {System.out.println(1+"+"+4+"="+b);}
-//		if(b==1+5) {System.out.println(1+"+"+5+"="+b);}
-//		if(b==1+6) {System.out.println(1+"+"+6+"="+b);}
+//		if(6==1+1) {System.out.println(1+"+"+1+"="+6);}
+//		if(6==1+2) {System.out.println(1+"+"+2+"="+6);}
+//		if(6==1+3) {System.out.println(1+"+"+3+"="+6);}
+//		if(6==1+4) {System.out.println(1+"+"+4+"="+6);}
+//		if(6==1+5) {System.out.println(1+"+"+5+"="+6);}
+//		if(6==1+6) {System.out.println(1+"+"+6+"="+6);}
 		
 		for(int a=1;a<=6;a++) {if(6==1+a) {System.out.println(1+"+"+a+"="+6);}}
 		for(int a=1;a<=6;a++) {if(6==2+a) {System.out.println(2+"+"+a+"="+6);}}
@@ -33,7 +33,10 @@ public class For2Ex0011 {
 		
 		int b1=1;
 		do {
+
 		int a = 1; while(a<=6) {if(6==b1+a) {System.out.println(b1+"+"+a+"="+6);}a++;};b1++;} while(b1<=6);
+
+
 
 
 //		if(b==2+1) {System.out.println(2+"+"+1+"="+b);}
