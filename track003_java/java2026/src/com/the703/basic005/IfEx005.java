@@ -7,7 +7,7 @@ public class IfEx005 {
 	public static void main(String[] args) {
 		char a = '\u0000', b = '\u0000';
 		Scanner sc = new Scanner(System.in);
-		
+
 		System.out.println("문자 입력 > ");a=sc.next().charAt(0);
 		
 		if (a >= 'A' && a <= 'Z') {
