@@ -17,11 +17,11 @@ public class Array2Ex004 {
 			for (int kan = 0; kan < datas[ch].length; kan++) {
 				result[ch][kan] = result[ch][kan] + datas[ch][kan];
 				
-				result [ch][4] = result [ch][4]+datas[ch][kan];
+				result [ch][datas[0].length] = result [ch][datas[0].length]+datas[ch][kan];
 				
-				result [3][kan] = result [3][kan]+datas[ch][kan];
+				result [datas.length][kan] = result [datas.length][kan]+datas[ch][kan];
 				
-				result [3][4]=result[3][4] +datas[ch][kan];
+				result [datas.length][datas[0].length]=result[datas.length][datas[0].length] +datas[ch][kan];
 			}
 		}
 		
