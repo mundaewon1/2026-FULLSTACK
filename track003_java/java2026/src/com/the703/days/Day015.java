@@ -1,6 +1,6 @@
 package com.the703.days;
 
-public class DDD {
+public class Day015 {
 
 	public static void main(String[] args) {
 		

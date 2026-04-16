@@ -2,7 +2,7 @@ package com.the703.days;
 
 import java.util.Scanner;
 
-public class DD {
+public class Day014 {
 
 	public static void main(String[] args) {
 		

@@ -21,4 +21,4 @@ body{
 
 /* transform + transition S*/
 h3{ transition: all 0.3s;}
-h3:hover{ transform: translateX(-10px);}
+h3:hover{ transform: translateY(-10px);}
