@@ -21,7 +21,7 @@ public class Array2Ex004 {
 				
 				result [datas.length][kan] = result [datas.length][kan]+datas[ch][kan];
 				
-				result [datas.length][datas[0].length]=result[datas.length][datas[0].length] +datas[ch][kan];
+				result [datas.length][datas[0].length] = result[datas.length][datas[0].length] +datas[ch][kan];
 			}
 		}
 		
