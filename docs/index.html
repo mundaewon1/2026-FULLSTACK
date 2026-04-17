@@ -75,10 +75,10 @@
 
     <section style="background-image:linear-gradient(90deg,rgba(90, 55, 218, 0.445),rgb(115, 227, 241));">
         <div class="container">
-        <h3 class="p-5 text-center" style="text-decoration:underline;">About Me</h3>
+        <h3 class="p-5 text-center" style="font-weight:bold;">About Me</h3>
             <div class="row">
-                <div class="col-sm-4">
-                    <P><img src="./img/two.png" alt="증명사진" class="w-75"></P>
+                <div class="col-sm-4" style="padding-left:px;">
+                    <p><img src="./img/two.png" alt="증명사진" class="w-50"></p>
                     <h4>Mun dae won</h4>
                     <ul>
                         <li>less40@naver.com</li>
@@ -89,7 +89,7 @@
                     </ul>
                 </div>
 
-                <div class="col-sm-4">
+                <div class="col-sm-4" style="padding-right:5%;">
                     <h4>Education</h4>
                     <ul>
                         <li>AI활용 풀스택(프론트엔드,백엔드)부트캠프(자바,파이썬,플러터)</li>
@@ -97,9 +97,12 @@
                     
                     <h4>KeyWord</h4>
                     <ul>
-                        <li class="btn btn-danger">열정</li>
-                        <li class="btn btn-warning">성실</li>
-                        <li class="btn btn-info">끈기</li>
+                        <li class="btn btn-danger mb-1">열정</li>
+                        <li class="btn btn-warning mb-1">성실</li>
+                        <li class="btn btn-info mb-1">끈기</li>
+                        <li class="btn btn-danger mb-1">협동심</li>
+                        <li class="btn btn-warning mb-1">이해</li>
+                        <li class="btn btn-info mb-1">배려</li>
                     </ul>
                 </div>
 
@@ -135,14 +138,14 @@
     </section>
 
     <section class="bg-secondary p-5">
-            <h3 class="text-center pb-5" style="text-decoration:underline;">Portfolio</h3>
+            <h3 class="text-center pb-5" style="font-weight:bold;">Portfolio</h3>
             <div class="container bg-white p-5 rounded shadow">
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-4 text-end">
                         <!-- 동영상 -->
                         <iframe class="w-100 h-75" 
                         src="https://www.youtube.com/embed/vPgugGnh1l8?si=9jDg1JHEieLzkK_k" title="YouTube video player"   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> 
-                        <button class="btn btn-info">포트폴리오 더보기</button>
+                        <button class="bttn btn btn-info" >포트폴리오 더보기</button>
                     </div>
 
                     <div class="col-sm-4">
@@ -175,18 +178,25 @@
     </section>
 
     <section class="p-5">
-        <h3 class="text-center p-3" style="text-decoration:underline;">Contact Me</h3>
-        <div class="container shadow p-5">
+        <h3 class="text-center pt-2 pb-1" style="font-weight:bold;">Contact Me</h3>
+            <p class="text-center text-info">문의사항은 언제든 환영합니다!</p>
+        <div class="container shadow p-5" style="max-width: 800px;">
         <form action="/action_page.php">
-        <div class="mb-3 mt-3">
-            <label for="email" class="form-label">제목:</label>
-            <input type="email" class="form-control" id="email" placeholder="제목을 적어주세요!" name="email">
+        <div class="">
+            <label for="email" class="form-label"></label>
+            <input type="email" class="form-control" id="email" placeholder="성함을 적어주세요!" name="email">
         </div>
         <div class="mb-3">
-            <label for="comment">Comments:</label>
-            <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+            <label for="email" class="form-label"></label>
+            <input type="email" class="form-control" id="email" placeholder="회신받을 메일을 적어주세요!" name="email">
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="mb-3">
+            <label for="comment"></label>
+            <textarea class="form-control" rows="5" id="comment" placeholder="전달하실 내용을 적어주세요!" name="text"></textarea>
+        </div>
+        <div class="text-end">
+        <button type="submit"class="bttn btn btn-primary">보내기</button>
+        </div>
         </form>
         </div>
 
@@ -194,7 +204,7 @@
 
     <!-- 글자를 페이지의 정중앙 / 배경색 좋아하는색 -->
     <footer class="bg-secondary text-center text-white p-5">
-        <p>© copyrights mun dae won 2026 all. rights reserved</p>
+        <p>© 2026 문대원 Portfolio. All rights reserved.</p>
     </footer>
 </body>
 </html>

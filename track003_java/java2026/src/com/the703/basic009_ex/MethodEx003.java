@@ -7,7 +7,9 @@ public class MethodEx003 {
 	public static String		mycolor() 				{ return "PURPLE";}
 	public static String		jangsu() 				{ return "★★★★★";}
 	public static int			myadd(int a,int b)		{return a+b;}
-	public static String		myban(char a)			{return (a=='A'? "노랑조" : "주황조");}
+	public static String		myban(char a)			{	 if(a=='A') {return "노랑조";}
+														else if(a=='B') {return "주황조";}
+														else 			{return "";} }
 	public static String		stdId(int a)			{return "G"+a;}
 	public static char			stdAvg(int a)			{	 if(a>=90)  {return 'A';}
 														else if(a>=80)  {return 'B';}
