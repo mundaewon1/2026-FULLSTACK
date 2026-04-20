@@ -123,11 +123,11 @@
  
 /* Q12: 버튼에 마우스를 올렸을 때 색상 변경과 흔들림 효과를 주려면?  - 배경색 변경: #004d40    - 애니메이션: shake (0.3초) ####### */
    .card .more-btn:hover {background-color:#004d40; 
-   animation: shake        0.3s     ease  ; 
+   animation: shake        0.3s     ease  ;
    }
 
 /* Q13: 흔들림(shake) 애니메이션을 정의하려면?   - 좌우/상하로 2px씩 이동 반복 */
- @Keyframes shake {
+ @keyframes shake {
    0%{   transform: translate(0,0); }
    25%{  transform: translate(2px,2px); }
    50%{  transform: translate(-2px,-2px); }
@@ -138,7 +138,7 @@
 /* Q14: 카드가 아래에서 위로 부드럽게 등장하도록 애니메이션을 정의하려면?
    - 시작: opacity 0, translateY(20px)
    - 종료: opacity 1, translateY(0) */
-   @Keyframes fadeInUp {
+   @keyframes fadeInUp {
       from{ opacity:0; transform:translateY(20px); }
       to{   opacity:1; transform:translateY(0); }
    }
@@ -170,7 +170,7 @@
    - 시작: translateY(0), scale(1), opacity 0.5
    - 중간: translateY(-300px), scale(1.2), opacity 1
    - 종료: translateY(-600px), scale(0.8), opacity 0*/
-@Keyframes rise {
+@keyframes rise {
    0%    {transform:translateY(0)      scale(1);   opacity:0.5;}
    50%   {transform:translateY(-300px) scale(1.2); opacity:1;}
    100%  {transform:translateY(-600px) scale(0.8); opacity:0;}
