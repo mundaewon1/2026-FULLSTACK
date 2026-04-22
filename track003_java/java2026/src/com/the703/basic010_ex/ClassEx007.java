@@ -12,17 +12,17 @@ class Calc{
 	   // void opcalc()  +더하기계산, -라면 -계산  , *라면 *계산 , /라면 /계산 
 	   void input() {
 		   Scanner sc = new Scanner(System.in);
-		   System.out.print("숫자 1입력 > ");num1=sc.nextInt();
+		   System.out.print("\n숫자 1입력 > ");num1=sc.nextInt();
 		   System.out.print("숫자 2입력 > ");num2=sc.nextInt();
 		   System.out.print("연산자 입력 + - * / > ");op=sc.next().charAt(0);
 	   }
-       void opcalc() {if(op=='+') {result=(num1+num2);}
-							       else if(op=='-') {result=(num1-num2);}
-							       else if(op=='*') {result=(num1*num2);}
-							       else if(op=='/') {result=(num1/num2);}
+       void opcalc() {if(op=='+') {result=num1+num2;}
+							       else if(op=='-') {result=num1-num2;}
+							       else if(op=='*') {result=num1*num2;}
+							       else if(op=='/') {result=num1/(double)num2;}
        }
 	   void show() {opcalc();
-		   System.out.println(num1+op+num2+"="+result);}
+		   System.out.printf("%d%c%d=%.2f",num1,op,num2,result);}
 	}
 
 public class ClassEx007 {
