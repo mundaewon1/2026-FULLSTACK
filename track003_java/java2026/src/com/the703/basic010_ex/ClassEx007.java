@@ -23,6 +23,7 @@ class Calc{
        }
 	   void show() {opcalc();
 		   System.out.printf("%d%c%d=%.2f",num1,op,num2,result);}
+
 	}
 
 public class ClassEx007 {
