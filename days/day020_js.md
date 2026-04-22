@@ -7,7 +7,7 @@
 2. 다음에 해당하는 코드를 한줄한줄  적으시오.
 2-1. 스크립트가 document어느위치에서든지 동작가능하게     window.addEventListener("load", function(){});
 2-2. 아이디가 test인것을  querySelector 이용해 선택     let test = document.querySelector("#test");
-2-3. 클릭시 prompt이용해서 당신의 이름묻기              text.onclick = function(){ let name = prompt("이름?"); alert(name);};
+2-3. 클릭시 prompt이용해서 당신의 이름묻기              test.onclick = function(){ let name = prompt("이름?"); alert(name);};
 2-4. alert이용해서 이름 알림창띄우기   
 2-5. 아래 스크립트를 채우세요.
 <input type="button"  value="addEventListener"  title="버튼4"  id="test"    class="btn btn-outline-primary"  />  
@@ -24,6 +24,7 @@
 - 모든클래스에 생성자가 반드시 존재
 - 생성자선언을 생략시 컴파일러가 자동으로 기본생성자를 추가
 - 개발자가 선언시 컴파일러가 자동생성  (        )
+
 
 3. 생성자형식
 class A{
