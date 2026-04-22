@@ -22,7 +22,7 @@ class Calc{
 							       else if(op=='/') {result=(num1/num2);}
        }
 	   void show() {opcalc();
-		   System.out.println(num1+op+num2+"="+result);}
+		   System.out.printf("%s%c%s=%.2f\n",num1,op,num2,result);}
 	}
 
 public class ClassEx007 {
