@@ -39,9 +39,13 @@
         newli.classList.add("fruit" , "added");  //#2. css 추가 (css 들) fruit, added
         document.getElementById("fruits").appendChild(newli); //#1. 망고추가되는지 확인
         
-
         console.log( fhtml , fhtml.length);
         console.log( fnode , fnode.length);  
+        };
+          document.getElementById("highlight").onclick=function(){
+          let lis = document.querySelector(".fruit");
+          lis.style.backgroundColor="skyblue";
+          lis.style.width="50px";
       };
 
  
