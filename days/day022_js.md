@@ -41,10 +41,10 @@ Q7. 변수의 종류와 메모리 위치를 연결하시오
 지역 변수 → (⑱ stack     ) 영역
 
 Q8. 접근자를 넓은 범위에서 좁은 범위로 적으시오
-(⑲ public  → ⑳ protected   → ㉑ dafault,pakeage   → ㉒ private )
+(⑲ public  → ⑳ protected   → ㉑ default,pakeage   → ㉒ private )
 
 Q9. 다음을 private으로 설정했다. 외부에서 접근 가능하게 설정해야 하는 것
-(㉓ 게터  / ㉔ 세터  ) 이다. 
+(㉓  getter / ㉔ setter  ) 이다. 
 
 Q10. 상속에 대한 설명으로 옳은 것을 고르시오  
 상속은 기존 클래스의 (㉕ 속성   )와 기능을 재사용하기 위해 사용된다.
