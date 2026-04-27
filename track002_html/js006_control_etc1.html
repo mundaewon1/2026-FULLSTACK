@@ -388,12 +388,15 @@
     />
     <script>
       window.addEventListener("load", function(){
-        document.getElementById("age").onclick=function(){
-          for(;;){
-          let age = prompt("어린이 나이 0~5세사이만 입력");
-            if(age<0 && age>5){continue;}
-            else if(age>=0 && age<=5){alert("어린이나이는 "+age+" 살"); break;}
-          };
+        document.getElementById("age").onclick=ad;
+
+          function ad(){
+            for(;;){
+              let age = prompt("어린이 나이 0~5세사이만 입력");
+              // if(age<0 && age>5);
+              // else 
+              if(age>=0 && age<=5){alert("어린이나이는 "+age+" 살"); break;}
+            };
         };
       });
     </script>
@@ -413,7 +416,7 @@
       +,-,*,/를 입력받지 못하면 무한반복으로 다시 입력받게 하시오.
     4. 각 연산에 맞게 계산기를 구현하시오. (+,-,*,/)
     </pre>
-    <form action="" method="post"  id="calc_form">
+    <form action="#" method="post"  id="calc_form">
       <fieldset>
       <legend class="myhidden"> 계산기 </legend>
           <p class="">
@@ -444,20 +447,27 @@
         document.getElementById("calc").onclick=function(){
           let num1, op, num2, result1;
           
-          for(;;){num1 = prompt("숫자1 입력");
-               if(num1<0 && num1>100){continue;}
-          else if(num1>=0 && num1<=100) {break;}
-          };
+          // for(;;){num1 = prompt("숫자1 입력");
+          //   if(num1>=0 && num1<=100)
+         
+          // op = prompt("연산자 입력 +,-,*,/");
+          // else if(op=='+' || op=='-' || op=='*' || op=='/')
+      
+          // num2 = prompt("숫자2 입력");
+          // else  if(num2>=0 && num2<=100) {break;}
+          // };
+
           for(;;){
-          op = prompt("연산자 입력 +,-,*,/");
-               if(op=='+' || op=='-' || op=='*' || op=='/'){break;}
-               else {continue;}
-          };
-          for(;;){
-          num2 = prompt("숫자2 입력");
-               if(num2<0 && num2>100){continue;}
-          else if(num2>=0 && num2<=100) {break;}
-          };
+            if( !(num1>0 && num1<=100) || num1=="" ){
+              num1 = prompt("숫자1 입력");
+            }else if( !(num2>0 && num2<=100) || num2=="" ){
+              num2 = prompt("숫자2 입력"); 
+            }else if( !(op=='+' || op=='-' || op=='*' || op=='/') ){
+              op = prompt("연산자 입력 +,-,*,/");
+            }else{ break;}
+
+          }
+
                if(op=='+'){result1=num1+num2;}
           else if(op=='-'){result1=num1-num2;}
           else if(op=='*'){result1=num1*num2;}
@@ -470,7 +480,38 @@
           a2.value=(op);
           a3.value=(num2);
           a4.value=(result1);
-        };
+        };/*
+                //1. 대상
+          let btn     = document.getElementById("calc"); //버튼
+          let targets = document.querySelectorAll("#calc_form  input"); 
+          console.log(targets); //#0  button //1: num1 , 2:abc, 3:num2, 4: result
+          let num1 = -1, num2=-1, op=' ', result=0;
+
+          btn.addEventListener("click" , function(){
+            //2. 입력 (0~100사이 무한반복, 빈칸검사)
+            for(;;){  //초기값 num1 = -1, num2=-1, op=' '
+              if(   !(num1>=0  &&  num1<=100) | num1==""  ){ //0~100사이가 아니거나  빈문자열
+                 num1 = prompt("1. 정수입력 0~100"); // 50
+              }else if(!(num2>=0  &&  num2<=100) | num2==""){
+                 num2 = prompt("2. 정수입력 0~100"); //3
+              }else if( !(op == '+' || op == '-' || op == '*' || op == '/') ){
+                 op = prompt("3. 연산자입력 (+,-,*,/)");  //+
+              }else{ break;}
+            }
+            //3. 처리
+            switch(op){
+              case '+' : result = Number(num1) + Number(num2); break;
+              case '-' : result = Number(num1) - Number(num2); break;
+              case '*' : result = Number(num1) * Number(num2); break;
+              case '/' : result = Number(num1) / Number(num2); break;
+            }
+            //4. 각 value 각각 셋팅
+            targets[1].value = num1;
+            targets[2].value = op;
+            targets[3].value = num2;
+            targets[4].value = op!='/'? result: result.toFixed(2); //소수점 2
+            
+          });*/
       })
     </script>
 </div> <!-- end contianer  -->
