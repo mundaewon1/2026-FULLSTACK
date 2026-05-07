@@ -1,11 +1,16 @@
 package com.the703.days;
 
 import java.util.ArrayList;
+<<<<<<< HEAD
+=======
+import java.util.Comparator;
+>>>>>>> cad15f56949ffcd1bc1552275febf3a98c778968
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+<<<<<<< HEAD
 import java.util.Objects;
 import java.util.Set;
 
@@ -15,6 +20,18 @@ class MilkDto{
 	public MilkDto() { super(); }
 	public MilkDto(String mname, int mprice) { super(); this.mname = mname; this.mprice = mprice; }
 	@Override public String toString() { return "MilkDto [mname=" + mname + ", mprice=" + mprice + "]"; }
+=======
+import java.util.Map.Entry;
+import java.util.Objects;
+import java.util.Set;
+
+class Milk{
+	private String mname;
+	private int mprice;
+	public Milk() { super(); }
+	public Milk(String mname, int mprice) { super(); this.mname = mname; this.mprice = mprice; }
+	@Override public String toString() { return "Milk [mname=" + mname + ", mprice=" + mprice + "]"; }
+>>>>>>> cad15f56949ffcd1bc1552275febf3a98c778968
 	
 	@Override public int hashCode() { return Objects.hash(mname, mprice); }
 	@Override public boolean equals(Object obj) {
@@ -24,7 +41,11 @@ class MilkDto{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
+<<<<<<< HEAD
 		MilkDto other = (MilkDto) obj;
+=======
+		Milk other = (Milk) obj;
+>>>>>>> cad15f56949ffcd1bc1552275febf3a98c778968
 		return Objects.equals(mname, other.mname) && mprice == other.mprice;}
 	
 	public String getMname() { return mname; }
@@ -34,8 +55,8 @@ class MilkDto{
 }
 
 public class Day028 {
-
 	public static void main(String[] args) {
+<<<<<<< HEAD
 		List<MilkDto> milks = new ArrayList<>();
 		milks.add(new MilkDto("바나나우유", 1300));
 		milks.add(new MilkDto("메론맛우유", 1800));
@@ -72,6 +93,72 @@ public class Day028 {
 		for(String key : maps.keySet()) {
 			System.out.println(key + maps.get(key).getMname()+maps.get(key).getMprice());
 		}
+=======
+		
+		List<Milk> milks = new ArrayList<>();
+		milks.add(new Milk("바나나우유", 1300));
+		milks.add(new Milk("메론맛우유", 1800));
+		milks.add(new Milk("커피우유", 1500));
+		milks.add(new Milk("커피우유", 1500));
+		
+//		for(int b=0;b<milks.size();b++) {
+//		for(Milk d:milks) {System.out.println(++b+"\t"+d.getMname()+"\t"+d.getMprice());}}
+		
+		// 오름차순
+		System.out.println("\n\n가겨순으로 오름차순");
+	      milks.sort( (m1, m2) ->  Integer.compare(m1.getMprice(), m2.getMprice())  );
+	      int a=0;
+	      for(Milk m :   milks) { System.out.printf("%d     %s    %d\n" , ++a, m.getMname(),  m.getMprice()); }
+	      //  void java.util.List.sort( Comparator<? super Milk> c )
+	      //  리턴값 void (안에서 알아서처리)
+	      //  Comparator<? super Milk> c   -  Comparator 비교 부품객체  <? super Milk> Milk 포함한 부모객체
+		System.out.println("\n\n가격순으로 오름차순");
+		
+		//1. 익명 객체
+//		milks.sort( new Comparator<Milk>() {
+//			@Override public int compare(Milk o1, Milk o2) { 
+//				return Integer.compare(o1.getMprice(), o2.getMprice()); }
+//		});
+		//2. 람다식
+		milks.sort( (o1,o2) -> Integer.compare(o1.getMprice(),o2.getMprice() ));
+		//@FunctionalInterface  public interface Comparator<T> { int compare(T o1, T o2); };
+		
+		//3. 참조형	Integer 부품객체에 compare라는 기능박스
+		// error : milks.sort( Integer::compare  ); Milk 객체에서 가격 꺼내야함
+		milks.sort(  Comparator.comparingInt(Milk::getMprice)  );
+		
+		for(int i=0;i<milks.size();i++) {
+			System.out.printf("%d   %s  %d\n",i+1,milks.get(i).getMname(),milks.get(i).getMprice());}
+		//  void java.util.List.sort(Comparator<? super Milk> c	)
+		//  리턴값 void (안에서 알아서처리)
+		//  Comparator<? super Milk> c	-  Comparator 비교 부품객체   <? super Milk>  Milk 포함한 부모객체
+		
+		
+		Set<Milk> sets = new HashSet<>();
+		sets.add(new Milk("바나나우유", 1300));
+		sets.add(new Milk("메론맛우유", 1800));
+		sets.add(new Milk("커피우유", 1500));
+		sets.add(new Milk("커피우유", 1500));
+		
+		Iterator<Milk> iter = sets.iterator();	//줄을 서시오
+		while(iter.hasNext()) { // 처리대상확인
+			Milk m = iter.next(); int i=0;
+			System.out.println(++i +m.getMname()+m.getMprice());
+		}
+		
+		Map<String,Milk> maps = new HashMap<>();
+		maps.put("banana", new Milk("바나나우유", 1300));  
+		maps.put("melon", new Milk("메론맛우유", 1800));  
+		maps.put("coffee", new Milk("커피우유", 1500));  
+		maps.put("coffee2", new Milk("커피우유", 1500));  
+		
+		for(String key:maps.keySet()) {
+			System.out.println(key+"\t"+maps.get(key).getMname()+"\t"+maps.get(key).getMprice());
+		}
+		
+//		for(Entry<String, Milk> as : maps.entrySet()) {
+//			System.out.println(as.getKey()+"\t"+as.getValue().getMname()+"\t"+as.getValue().getMprice());
+//		}
 	}
 }
 
@@ -82,8 +169,8 @@ Q1. 빈칸 채우기
     - 주요 메서드: add, get, size, remove, contains
 2. Set은 순서가[x 주머니 ] 구조로 데이터를 관리하며,  중복을 [x]
     - 주요 메서드: add, 향상된 for/Iterater, size, remove, contains
-3. Map은 [key_]와 [value]의 쌍으로 데이터를 관리한다. 사전 구조
-    - 주요 메서드: put, get(key), size, remove, contains
+3. Map은 [key]와 [value]의 쌍으로 데이터를 관리한다. 사전 구조
+    - 주요 메서드: put, get(key), size, remove, containsKey, containsValue, entrySet, keySet
  
 ---
 
