@@ -83,9 +83,9 @@ public class Day028 {
 		sets.add(new Milk("커피우유", 1500));
 		sets.add(new Milk("커피우유", 1500));
 		
-		Iterator<Milk> iter = sets.iterator();	//줄을 서시오
+		Iterator<Milk> iter = sets.iterator(); int i=0;	//줄을 서시오
 		while(iter.hasNext()) { // 처리대상확인
-			Milk m = iter.next(); int i=0;
+			Milk m = iter.next();
 			System.out.println(++i +m.getMname()+m.getMprice());
 		}
 		
