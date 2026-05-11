@@ -72,18 +72,11 @@ public class Day028 {
 		sets.add(new Milk("커피우유", 1500));
 		sets.add(new Milk("커피우유", 1500));
 		
-<<<<<<< HEAD
-		Iterator<Milk> iter = sets.iterator(); int i=0;	//줄을 서시오
+		Iterator<Milk> iter = sets.iterator(); int a=0;	//줄을 서시오
 		while(iter.hasNext()) { // 처리대상확인
 			Milk m = iter.next();
-			System.out.println(++i +m.getMname()+m.getMprice());
-=======
-		Iterator<Milk> iter = sets.iterator();
-		while(iter.hasNext()) {
-			Milk d = iter.next();
-			System.out.println(d.getMname()+"\t"+d.getMprice());
->>>>>>> 14ba639de483f2a3a38d35c44aa8f842befe11e0
-		}
+			System.out.println(++a +m.getMname()+m.getMprice());
+
 		
 		Map<String,Milk> maps = new HashMap<>();
 		maps.put("banana", new Milk("바나나우유", 1300));  
@@ -93,7 +86,7 @@ public class Day028 {
 		
 		for(String key:maps.keySet()) {
 			System.out.println(key+"\t"+maps.get(key).getMname()+"\t"+maps.get(key).getMprice());
-		}
+		}}
 	}
 }
 
