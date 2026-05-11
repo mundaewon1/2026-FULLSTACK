@@ -50,7 +50,6 @@ public class JavaIO003 {
 	}
 }
 /*
-/*
 1. Java I/O
 - 입력(input)과 출력(output)
 - 두  대상간의 데이터를 주고 받는 것
