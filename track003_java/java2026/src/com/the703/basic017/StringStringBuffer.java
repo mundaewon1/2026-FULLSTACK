@@ -5,19 +5,20 @@ public class StringStringBuffer {
 		//#1. String
 		String str = "ABC";		
 		System.out.println("1. str 주소 > " + str + " " + System.identityHashCode(str));
+		//					1. str 주소 > ABC 1208736537
 		
 		str += "D";
 		System.out.println("2. str 주소 > " + str + " " + System.identityHashCode(str));
-		
+		//					2. str 주소 > ABCD 1597655940
 		
 		//#2. StringBuffer
 		StringBuffer sb = new StringBuffer();
 		sb.append("ABC");
 		System.out.println("3. sb 주소 > " + sb + " " + System.identityHashCode(sb));
-		
+		//					3. sb 주소 > ABC 1728790703
 		sb.append("D");
 		System.out.println("4. sb 주소 > " + sb + " " + System.identityHashCode(sb));
-		
+		//					4. sb 주소 > ABCD 1728790703
 		
 	}
 }
