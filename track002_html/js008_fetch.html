@@ -176,20 +176,3 @@
 
 </body>
 </html>
-        function showText4(){
-            fetch("./data/text4.txt")
-            .then( res => res.text() )
-            .then( txt => {
-                let lines = txt.split("\n");    console.log(lines);
-                result="";
-
-                lines.forEach( l => {
-                    let arr = l.split("/");
-                    result +=`<tr><td>${arr[0]}</td><td>${arr[1]}</td><td>${arr[2]}</td><td>${arr[3]}</td></tr>`; 
-                });
-                document.querySelector("#resultText tbody").innerHTML = result;
-            })
-            .catch( err => {
-                document.querySelector("#resultText tbody").innerHTML = "에러발생 : " + err.message
-            });
-        }
