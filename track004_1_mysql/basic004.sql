@@ -264,6 +264,7 @@ select * from userinfo;
 -- +----+--------+-----+
 -- 4 rows in set (0.00 sec)
 
+
 desc userinfo;
 -- >  1. 테이블복사해오기
 insert into userinfo value (1,'first',11);
