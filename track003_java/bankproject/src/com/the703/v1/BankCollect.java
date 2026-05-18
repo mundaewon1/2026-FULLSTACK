@@ -44,6 +44,8 @@ class Bank{
 	              + "👉 번호를 선택하세요:");
 	        menu = sc.nextInt();
 	        
+	        if( menu == 9 ) {  exit(); break; }
+	        
 	        if( menu == 1 ) {  add(); }
 	        else {
 	        	BankDto find = login();// 로그인확인
@@ -65,7 +67,7 @@ class Bank{
 		Scanner sc = new Scanner(System.in);
 		//입력 - 사용자에게 정보입력받기
 		System.out.println("아이디  		입력 > "); String tempid = sc.next();  // 아이디중복검사
-		if( users.contains(tempid)==true ) {System.out.println("중복되는 아이디입니다"); return;}
+		//if( users.contains(tempid)==true ) {System.out.println("중복되는 아이디입니다"); return;}
 		
 		System.out.println("비밀번호  	입력 > "); String temppass = sc.next();
 		System.out.println("잔액			입력 > "); double tempbalance = sc.nextDouble();
@@ -111,7 +113,7 @@ class Bank{
 	// 유저삭제(remove) -  		  
 	void	  delete ( BankDto user ){ System.out.println( users.remove(user) ? "유저삭제완료":"관리자문의");}
 	// 종료   		  - 		  
-	void	  exit	(  ){}
+	void	  exit	(  ){ System.out.println("시스템을 종료합니다.");}
 }
 
 public class BankCollect {
