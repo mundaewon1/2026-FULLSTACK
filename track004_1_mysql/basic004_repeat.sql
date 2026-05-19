@@ -29,3 +29,101 @@
 -- -- 2. 이메일 필드 수정(change)   email을 email2로  자료형은 varchar(50) 으로 
 -- -- 3. 이메일 필드 수정(modify)  변경) email2의  자료형을 varchar(100) 으로 (이상한점 - modify는 필드명 수정 불가) 
 -- -- 4. 이메일 필드 삭제(drop)   
+
+
+-- 복습문제 --
+-- STEP1) 
+-- 1.  데이터베이스 언어 - 다음과 같은형식으로 빈칸 채우기
+-- DDL(  정의어   )  CREATE, ALTER, DROP
+-- DML(  조작어   )  INSERT, SELECT, UPDATE, DELETE 
+-- DCL(  제어어   )  GRANT , REVOKE
+
+
+-- STEP2) 
+-- Q1. userinfo 테이블을 복사해서 userinfo_ex 테이블을 만드시오.
+
+-- mysql> desc userinfo_ex;
+-- +-------+--------------+------+-----+---------+----------------+
+-- | Field | Type         | Null | Key | Default | Extra          |
+-- +-------+--------------+------+-----+---------+----------------+
+-- | no    | int          | NO   | PRI | NULL    | auto_increment |
+-- | name  | varchar(100) | NO   |     | NULL    |                |
+-- | age   | int          | NO   |     | NULL    |                |
+-- +-------+--------------+------+-----+---------+----------------+
+-- 3 rows in set (0.00 sec)
+create table userinfo_ex select * from userinfo; -- (구조 + 데이터)
+desc userinfo_ex;
+
+alter table userinfo_ex modify no int not null primary key auto_increment; -- 숫자자동증가 + 기본키
+
+
+-- mysql> select * from userinfo_ex;
+-- +----+--------+-----+
+-- | no | name   | age |
+-- +----+--------+-----+
+-- |  1 | first  |  11 |
+-- |  2 | second |  22 |
+-- |  3 | third  |  33 |
+-- |  4 | fourth |  44 |
+-- +----+--------+-----+
+select * from userinfo_ex;
+
+
+
+-- Q2. userinfo_ex; 에  다음과 같이 데이터 추가 
+-- mysql> select * from userinfo_ex;
+-- +----+--------+-----+
+-- | no | name   | age |
+-- +----+--------+-----+
+-- |  1 | first  |  11 |
+-- |  2 | second |  22 |
+-- |  3 | third  |  33 |
+-- |  4 | fourth |  44 |
+-- |  5 | fifth    |  50 |
+-- |  6 | six   |  66 |
+-- +----+--------+-----+
+show tables;
+desc userinfo_ex;
+
+create table userinfo_ex select * from userinfo_ex;
+select * from userinfo_ex;
+insert into userinfo_ex(name,age) values ("fifth",50);
+insert into userinfo_ex(name,age) values ("six",66);
+
+-- Q3. userinfo_ex 에 데이터 수정
+-- mysql> select * from userinfo_ex;
+-- +----+--------+-----+
+-- | no | name   | age |
+-- +----+--------+-----+
+-- |  1 | first  |  11 |
+-- |  2 | second |  22 |
+-- |  3 | third  |  33 |
+-- |  4 | fourth |  44 |
+-- |  5 | fifth    |  55 |   ← age 55로 수정
+-- |  6 | six   |  66 |       ← name sixth로 수정
+-- +----+--------+-----+
+update userinfo_ex set age=55 where name="fifth";
+update userinfo_ex set name="sixth" where name="six";
+set sql_safe_updates=0;
+
+desc userinfo_ex;
+
+alter table userinfo_ex modify no int not null primary key auto_increment; 
+
+-- Q4. userinfo_ex 에 데이터 삭제
+-- mysql> select * from userinfo_ex;
+-- +----+--------+-----+
+-- | no | name   | age |
+-- +----+--------+-----+
+-- |  1 | first  |  11 |
+-- |  2 | second |  22 |
+-- |  3 | third  |  33 |
+-- |  4 | fourth |  44 | 
+-- +----+--------+-----+
+
+delete from userinfo_ex where no=5;
+delete from userinfo_ex where name="sixth";
+
+delete from userinfo_ex where no>=5;
+
+select * from userinfo_ex;

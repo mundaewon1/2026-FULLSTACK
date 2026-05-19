@@ -29,6 +29,7 @@
 	  		<button type="submit" value="전송" class="btn btn-info"  >전송</button>
 	  	</div>
 	  </form>
+
 	  <script>
 	  	function check(){
 	  		let para = document.getElementById("para");
