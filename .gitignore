@@ -4,7 +4,7 @@
 .settings/
 eclipse/
 portfolio/
-track005_jsp/tomcat 9.0/apache-tomcat-9.0.100
+track005_jsp/tomcat 9.0
 
 # 빌드 결과물 무시
 /bin/
