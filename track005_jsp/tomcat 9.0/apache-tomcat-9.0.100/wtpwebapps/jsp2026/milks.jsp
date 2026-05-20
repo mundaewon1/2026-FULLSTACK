@@ -109,11 +109,11 @@ select * from milk_order where ono=1;
 select * from milk_order;
 
 -- Q4.  milk_order 해당번호의 이름과 갯수 수정
-update milk_order set oname='choco' , onum=2 where ono='1';
+update milk_order set oname='choco' , onum=2 where ono=1;
 
 -- Q5.  milk_order 해당번호의 데이터 삭제
-delete from milk_order where onum='1';
-
+delete from milk_order where onum=1;
+set sql_safe_updates=0;
 
 <!--		 주문삽입, 수정, 삭제	 -->
 <!--		 주문삽입, 수정, 삭제	 -->
