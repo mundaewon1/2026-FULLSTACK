@@ -1,4 +1,4 @@
-<%@page import="java.sql.*"%>
+<%@ page import="java.sql.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>   
 <!DOCTYPE html>
@@ -97,8 +97,7 @@
         if(pstmt != null){pstmt.close();}
         if(conn  != null){out.print("db연동"); conn.close();}
       }catch(Exception e){ e.printStackTrace();}
-      %>
-      
+      %>      
    </div>
 </body>
 </html>

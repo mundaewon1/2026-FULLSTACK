@@ -1,5 +1,5 @@
 #Tomcat publish data
-#Tue May 19 18:13:42 KST 2026
-org.eclipse.jst.jee.server\:book=D\:\\mundaewon\\2026-FULLSTACK\\track005_jsp\\tomcat 9.0\\apache-tomcat-9.0.100\\wtpwebapps\\book
-org.eclipse.jst.jee.server\:jsp2026=D\:\\mundaewon\\2026-FULLSTACK\\track005_jsp\\tomcat 9.0\\apache-tomcat-9.0.100\\wtpwebapps\\jsp2026
-org.eclipse.jst.jee.server\:v1=D\:\\mundaewon\\2026-FULLSTACK\\track005_jsp\\tomcat 9.0\\apache-tomcat-9.0.100\\wtpwebapps\\v1
+#Wed May 20 18:08:03 KST 2026
+org.eclipse.jst.jee.server\:book=D\:\\mundaewon\\2026-FULLSTACK\\track005_jsp\\tomcat 9.0\\apache-tomcat-9.0.100\\apache-tomcat-9.0.100\\wtpwebapps\\book
+org.eclipse.jst.jee.server\:jsp2026=D\:\\mundaewon\\2026-FULLSTACK\\track005_jsp\\tomcat 9.0\\apache-tomcat-9.0.100\\apache-tomcat-9.0.100\\wtpwebapps\\jsp2026
+org.eclipse.jst.jee.server\:v1=D\:\\mundaewon\\2026-FULLSTACK\\track005_jsp\\tomcat 9.0\\apache-tomcat-9.0.100\\apache-tomcat-9.0.100\\wtpwebapps\\v1
