@@ -257,8 +257,8 @@ set sql_safe_updates=0;
 	      <div class="card-body">
 	        <form action="jsp012_delete.jsp" method="post" onsubmit="return ck2()">
 		        <div class="my-3">
-		        	<label for="oname" class="form-label">삭제할 우유이름</label>
-		        	<Input type="text" class="form-control" id="oname2" name="oname" />
+		        	<label for="ono2" class="form-label">삭제할 우유번호</label>
+		        	<Input type="text" class="form-control" id="ono2" name="ono" />
 		        </div>
 		        
 		        <div class="my-3">
