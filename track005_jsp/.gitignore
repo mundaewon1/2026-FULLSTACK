@@ -5,8 +5,8 @@
 eclipse/
 portfolio/
 track005_jsp/tomcat9.0
-/.metadata/
-/Servers/
+.metadata/
+Servers/
 
 # 빌드 결과물 무시
 /bin/
