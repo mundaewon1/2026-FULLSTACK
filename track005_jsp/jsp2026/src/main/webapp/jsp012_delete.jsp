@@ -16,9 +16,9 @@
 	pstmt = conn.prepareStatement(sql);
 	pstmt.setInt( 1, ono);
 	
-	int result = pstmt.executeUpdate();
+	//int result = pstmt.executeUpdate();
 	//4. jsp012_milks.jsp 로 돌아가기		- 알림창		주소표시창줄
-	if(result > 0 ){ 
+	if(pstmt.executeUpdate() > 0 ){ 
 		out.println("<script> alert('주문삭제 완료');  location.href='jsp012_milks.jsp';    </script>");
 	}else{
 		out.println("<script> alert('관리자에게 문의해주세요');  location.href='jsp012_milks.jsp';    </script>");
@@ -27,6 +27,5 @@
 	if(pstmt != null){pstmt.close();}
 	if(conn != null){conn.close();}
 	}catch(Exception a ){ a.printStackTrace();}
-
-
+	
 %>

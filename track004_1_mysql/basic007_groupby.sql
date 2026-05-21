@@ -218,7 +218,11 @@ order by avg(age) desc;
 -- | C    |          0 |
 -- +------+------------+
 -- 3 rows in set (0.00 sec)
-select ban,count(*)`미성년자수` from group_userinfo where age < 20 group by ban; 
+-- select ban,count(*)`미성년자수` from group_userinfo where age < 20 group by ban; 
+select ban,
+       count(case when age < 20 then 1 end) as `미성년자수`
+from group_userinfo
+group by ban;
 
 -- [question10] 반별 sns의 수신거부 숫자를 구하시오.
 -- +------+---------------+
@@ -229,7 +233,11 @@ select ban,count(*)`미성년자수` from group_userinfo where age < 20 group by
 -- | C    |             2 |
 -- +------+---------------+
 -- 3 rows in set (0.00 sec)
-select ban,count(*)`sns수신거부수` from group_userinfo where sns = 'n' group by ban;
+-- select ban,count(*)`sns수신거부수` from group_userinfo where sns = 'n' group by ban;
+select ban,
+       count(case when sns = 'n' then 1 end) as `sns수신거부수`
+from group_userinfo
+group by ban;
 
 -- ________________________________________________________________
 -- ________________________________________________________________
@@ -496,7 +504,7 @@ select deptno, job ,avg(sal)`평균급여` from emp group by deptno,job having a
 --   WHERE AVG(SAL) >= 2000  
 --   GROUP BY DEPTNO, JOB
 --   ORDER BY DEPTNO, JOB;
---  집계함수의 필터링은 having 사용
+--  집계함수의 조건은 having 사용
 
 -- --------------------------------------------------------
 -- --------------------------------------------------------
@@ -512,7 +520,8 @@ select deptno, job ,avg(sal)`평균급여` from emp group by deptno,job having a
 -- |     30 | MANAGER | 2850.0000 |
 -- +--------+---------+-----------+
 -- 4 rows in set (0.00 sec)
-select deptno,job,avg(sal)`평균급여` from emp group by deptno,job having avg(sal) between 2000 and 3000 order by deptno asc;
+select deptno,job,avg(sal)`평균급여` 
+from emp where sal <= 3000 group by deptno,job having avg(sal) >= 2000 order by deptno asc;
 
 -- --------------------------------------------------------
 -- -------------------------------------------------------- ##
@@ -533,5 +542,6 @@ select deptno,job,avg(sal)`평균급여` from emp group by deptno,job having avg
 -- |     30 | SALESMAN  |      4 |     1600 |   5600 | 1400.0000 |
 -- +--------+-----------+--------+----------+--------+-----------+
 -- 9 rows in set (0.00 sec)
-select deptno,job,count(job)`사원수`,max(sal)`최고급여`,sum(sal)`급여합`,avg(sal)`평균급여` from emp group by deptno,job order by deptno asc;
+select deptno,job,count(*)`사원수`,max(sal)`최고급여`,sum(sal)`급여합`,avg(sal)`평균급여` 
+from emp group by deptno,job order by deptno asc;
 
