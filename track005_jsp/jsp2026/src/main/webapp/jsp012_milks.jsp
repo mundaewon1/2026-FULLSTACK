@@ -235,7 +235,47 @@
 	      </div>
 	    </div>
 	  </div>
-
+	  
+	  <div class="card">
+	    <div class="card-header  bg-info">
+	      <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseTwo">
+	        주문수정
+	      </a>
+	    </div>
+	    <div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
+	      <div class="card-body">
+		       <form action="jsp012_update.jsp" method="post" onsubmit="return ck1()">
+		        <div class="my-3">
+		        	<label for="ono1" class="form-label">수정할 우유번호</label>
+		        	<Input type="text" class="form-control" id="ono1" name="ono" />
+		        </div>
+		        <div class="my-3">
+		        	<label for="oname1" class="form-label">수정할 우유이름</label>
+		        	<Input type="text" class="form-control" id="oname1" name="oname" />
+		        </div>
+		        <div class="my-3">
+		        	<label for="onum1" class="form-label">수정할 우유 개수</label>
+		        	<Input type="text" class="form-control" id="onum1" name="onum" />
+		        </div>
+		        
+		        <div class="my-3">
+		        	<button type="submit" class=" btn btn-warning"> 수정하기 </button>
+		        </div>
+	        	</form>
+	        	
+	        <script>
+	        function ck1(){
+	        	let oname = document.getElementById("oname1");
+	        	let onum = document.getElementById("onum1");
+	        	if(oname.value.trim() ==""){ alert("우유이름을 입력해주세요"); oname.focus(); return false;}
+        		if(onum.value.trim() ==""){ alert("우유개수를 입력해주세요"); onum.focus(); return false;}
+	        return true;
+	        };
+	        </script>
+	      </div>
+	    </div>
+	  </div>
+	  
 		</div>
        </div>
 
