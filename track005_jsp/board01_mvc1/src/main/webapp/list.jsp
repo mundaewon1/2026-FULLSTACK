@@ -4,7 +4,7 @@
 <%@ include file = "./inc/header.jsp" %>
     <!-- content -->
     <section class="container my-5">
-        <h3> Q N A 상세보기 </h3>
+        <h3> 글 목록 </h3>
         <p class="my-4"></p>
         <hr/>
 
@@ -28,14 +28,26 @@
 	       Class.forName("com.mysql.cj.jdbc.Driver");
 	       PreparedStatement pstmt = null; Connection conn = null; ResultSet rset = null;
 	       String url = "jdbc:mysql://localhost:3306/mbasic";
-	       String sql = "select * from mvcboard1 order by bno desc";
-	       conn = DriverManager.getConnection(url,"root","1234");
-	       pstmt = conn.prepareStatement(sql);
+	       String sql = "select b.* , (select count(*) from mvcboard1 ) `cnt`"
+	       				+" from mvcboard1 b order by bno desc"; 
 	       
+	       conn = DriverManager.getConnection(url,"root","1234");
+	       pstmt = conn.prepareStatement(sql,  
+                   ResultSet.TYPE_SCROLL_INSENSITIVE, 
+                   ResultSet.CONCUR_READ_ONLY);
+	       	       
 	       rset = pstmt.executeQuery();
 		   
+	       //1) 먼저 전체글 갯수 출력
+			int cnt = -1;
+	        //		줄
+			if(rset.next()){ 
+				cnt = rset.getInt("cnt");  	//칸
+				rset.beforeFirst();			// 다시 처음으로 표부터 처리	
+			}
+	        //2)	  
 	       while ( rset.next() ){
-	    	   out.println("<tr><td>"+rset.getInt("bno")+
+	    	   out.println("<tr><td>"+ cnt-- +
 	    			   "</td><td><a href='detail.jsp?bno="+rset.getInt("bno")+"'>"
 	    	   			+rset.getString("btitle")+
 	    			   "</a></td><td>"+rset.getString("bname")+
