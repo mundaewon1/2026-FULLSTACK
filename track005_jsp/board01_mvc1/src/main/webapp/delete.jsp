@@ -4,16 +4,17 @@
 
 
    <div class="container card my-5">
-      <h3 class="card-header">글 등록</h3>
+      <h3 class="card-header">글 삭제</h3>
 
-       <form action="list.jsp" method="get" onsubmit="return ck()">
+       <form action="delete_action.jsp?bno=<%=request.getParameter("bno") %>" method="post" onsubmit="return ck()">
        <div class="my-3">
-	       <label for="bpass" class="form-label">비밀번호</label>
+	       <label for="bpass" class="form-label">비밀번호 입력</label>
 	       <Input type="text" class="form-control" id="bpass" name="bpass"/>
        </div>
        <div class="my-3">
+           <button type="reset"   class="btn btn-outline-primary"  title="취소">취소</button>
+           <a href="list.jsp"  class="btn btn-primary"  title="목록">목록</a>
            <button type="submit"   class="btn btn-outline-primary"  title="확인">확인</button>
-           <button type="reset"  class="btn btn-primary"  title="취소">취소</button>
        </div>
        </form>
        

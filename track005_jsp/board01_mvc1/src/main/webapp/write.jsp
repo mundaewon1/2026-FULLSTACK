@@ -42,7 +42,6 @@
    	    	if(bpass.value.trim() == ""){ alert("비밀번호 입력해주세요."); bpass.focus(); return false; }
    	    	if(btitle.value.trim() == ""){ alert("제목을 입력해주세요."); btitle.focus(); return false; }
    	    	if(bcontent.value.trim() == ""){ alert("내용을 입력해주세요."); bcontent.focus(); return false; }
-   	    	else {alert("글쓰기 성공");}
    	    return true;
        };
        </script>
