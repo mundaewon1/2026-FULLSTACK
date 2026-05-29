@@ -1,4 +1,4 @@
-<%@page import="com.the703.servlet.java001"%>
+<%@page import="com.the703.servlet.Java001"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>   
 <!DOCTYPE html>
@@ -35,7 +35,7 @@
       <h4>001. java class 부품객체 사용</h4>
       
       <%
-      java001 basic = new java001(10,20);	 // ctrl + space
+      Java001 basic = new Java001(10,20);	 // ctrl + space
       out.println(basic);
       %>      
       

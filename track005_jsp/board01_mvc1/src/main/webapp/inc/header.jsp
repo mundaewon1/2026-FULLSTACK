@@ -1,44 +1,59 @@
+<%@taglib  prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>   
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THEJOA703</title>
-    <!-- Latest compiled and minified CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Latest compiled JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="./css/my1.css" rel="stylesheet">
+<meta charset="UTF-8">
+<title>JSP</title>
+<!-- Latest compiled and minified CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-    <!-- header -->
-    <header>
-        <h1 class="myhidden">THEJOA703</h1>
-        <nav class="navbar navbar-expand-sm navbar-dark bg-info">
-            <h2 class="myhidden">주메뉴</h2>
-        <div class="container-fluid">
-            <a class="navbar-brand px-5" href="javascript:void(0)"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="mynavbar">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">BOARD</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">REPLY</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">PAGING</a>
-                <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">GALLERY</a>
-                </li>
-            </ul>
-            </div>
-        </div>
-        </nav>
-    </header>
+<header>
+	<div class="p-5 bg-primary text-white text-center">
+	  <h1>THEJOA703</h1>
+	  <p>MVC1 JSP PROJECT</p>
+	</div>
+	
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	  <div class="container-fluid">
+	    <a class="navbar-brand" href="#">Logo</a>
+	  </div>
+	  <div class="collapse navbar-collapse" id="mynavbar">
+		<ul class="navbar-nav ms-auto">
+		<!--  애플리케이션 루트기준 -->
+		<%-- <%@taglib  prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %> --%>
+        <c:if test="${empty sessionScope.email}">
+	        <li class="nav-item">
+	        <a class="nav-link" href="${pageContext.request.contextPath}/LoginAction">Login</a>
+	        </li>
+	        
+	        <li class="nav-item">
+	        <a class="nav-link" href="${pageContext.request.contextPath}/JoinAction">Join</a>
+	        </li>
+	        
+	        <li class="nav-item">
+	        <a class="nav-link" href="${pageContext.request.contextPath}/Users">유저목록</a>
+	        </li>
+        </c:if>
+        
+        <c:if test="${not empty sessionScope.email}"> <!-- email 비어있지 않으면 표시 -->
+	        <li class="nav-item">
+	        <a class="nav-link" href="${pageContext.request.contextPath}/MyAction">Mypage</a>
+	        </li>
+	       
+	        <li class="nav-item">
+	        <a class="nav-link" href="${pageContext.request.contextPath}/Logout">Logout</a>
+	        </li>
+	        
+        </c:if>
+
+       </ul>        
+       </div>
+	</nav>
+</header>
     <!-- header.jsp -->
