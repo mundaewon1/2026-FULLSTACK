@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class jsp019
  */
 @WebServlet("/MilkInsert")
-public class jsp019 extends HttpServlet {
+public class Jsp019 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
  
-    public jsp019() {
+    public Jsp019() {
         super();
     }
 

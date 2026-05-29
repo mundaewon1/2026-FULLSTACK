@@ -1,11 +1,11 @@
 package com.the703.servlet;
 
-public class java001 {
+public class Java001 {
 	private int a;
 	private int b;
 	
-	public java001() { super(); }
-	public java001(int a, int b) { super(); this.a = a; this.b = b; }
+	public Java001() { super(); }
+	public Java001(int a, int b) { super(); this.a = a; this.b = b; }
 	@Override public String toString() { return "java001 [a=" + a + ", b=" + b + "]"; }
 
 	public int getA() { return a; }
