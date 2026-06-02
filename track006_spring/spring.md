@@ -150,11 +150,15 @@ ani=cat
 
 
 
-1. 구성확인
-코드
+
+6. di 연습문제)
+
+1) ex1 스프링프로젝트
+2) 구성확인
+
 [IceCreamShop]  (사용) →   [<<interface>> IceCream]   
-   ↑(삽입)         ↑(구현)         ↑(구현)   
- [beans.xml] (생성) →   [Vanilla / Chocolate]
+   ↑(삽입)                     ↑(구현)         ↑(구현)   
+ [beans.xml] (생성)    →   [ Vanilla / Chocolate ]
 
  >> di? 각 클래스의 의존관계를 [설정파일]을 통해 컨테이너가 자동연결
 
@@ -168,8 +172,6 @@ public interface IceCream {
 }
 2) 구현클래스
 com.company.ioctest
-
-package com.company.ioc;
 
 public class Vanilla implements IceCream {
     @Override public String flavor() { return "Vanilla-flavor"; }
@@ -186,7 +188,7 @@ public class Chocolate implements IceCream {
 
 3) 사용클래스 - IceCreamShop
 
-package com.company.ioc;
+package com.company.ioctest;
 public class IceCreamShop {
     private String shopName;
     private IceCream iceCream;
@@ -213,7 +215,7 @@ public class IceCreamShop {
 
 
 QUESTION1) DI - property 를 이용하여 셋팅하고 JUnit Test를 하시오
---1-1 com.company.test1 [IceCreamShop 에 있는거 다 세팅]
+--1-1 com.company.ioc1 [IceCreamShop, Vanilla , Chocolate]
 public class IceCreamShop {
     private String shopName;
     private IceCream1 iceCream;
@@ -227,17 +229,86 @@ public class IceCreamShop {
      shop.setIceCream(vanilla);
 -->
 
-// JUnit Test  
+--1-3 JUnit Test  
 public void test1() {
     IceCreamShop shop = (IceCreamShop) context.getBean("iceCreamShop");
     shop.print();
 }
 
 
-
 QUESTION2) DI - component-scan, properties 를 이용해서 셋팅하고 JUnit Test를 하시오
-<context:component-scan base-package="com.company.ioc"/>
+--1-1 com.company.config [test2.xml]
+<context:component-scan base-package="com.company.ioc2"/>
 <context:property-placeholder location="classpath:shop.properties"/>
+
+--1-2 com.company.ioc2 [IceCreamShop, Vanilla , Chocolate]
  
+--1-3 JUnit Test  
+public void test1() {
+    IceCreamShop shop = (IceCreamShop) context.getBean("iceCreamShop");
+    shop.print();
+}
+
+---------------------
+#3.  Bean
+---------------------
+
+1.  xml   vs  Annotation
+>> xml : 운영
+>> Annotation : 개발
+XML - [운영] , 모든 Bean을 명시적으로 xml에 등록
+    - 여러개발자가 같은 설정파일을 공유해서 개발하면 
+      수정시 충돌이 일어날 경우가 많음.
+
+2.@Component
+- @Component 일반적인 컴포넌트  <bean> 스프링이 관리하는 객체
+- @Component 구체화된 형식
+   @Controller  웹요청받아서 응답
+   @Service     서비스 레이어, 비즈니스 로직
+   @Repository  데이터베이스
+
+3. Bean 의존관계주입
+   1. @Autowired - 정밀한 의존관계 
+      - 프로퍼티, setter, 생성자,, 적용
+   2. @Qualifier - 동일한타입의 bean 구분
+   3. @Value  단순값
+   4. @Resource - 자원연결(  .properties)   
+
+4. component-scan
+<context:component-scan  base-package="경로설정"/>
+
+---------------------
+#4.   DB  + Mybatis
+---------------------
+1. DataSource
++ SimpleDrdiverDataSource   - 가장단순한버젼
+
+2. mybatis
+- sql을 별도로 파일분리해서 관리
+- orm (object relational mapping) 프레임워크
+
+3. 설정내용
+root-context.xml   환경정보설정
+db.propertis       db정보설정
+SqlSessionFacotryBean  : SqlSession 생성 및 관리
+SqlSession           :  sql 실행 , 트랜잭션
+mapper.xml
 
 
+>1. 테이블 만들기
+mysql> desc userinfo_e;
++-------+--------------+------+-----+---------+----------------+
+| Field | Type         | Null | Key | Default | Extra          |
++-------+--------------+------+-----+---------+----------------+
+| no    | int          | NO   | PRI | NULL    | auto_increment |
+| email | varchar(100) | NO   |     | NULL    |                |
+| age   | int          | YES  |     | NULL    |                |
++-------+--------------+------+-----+---------+----------------+
+3 rows in set (0.01 sec) 
+
+>2. crud - insert, select, update, delete
+insert : insert into userinfo_e(no,email,age) values(1,'',22);
+select (전체): select * from userinfo_e;
+select (해당번호의 읽기): select * from userinfo_e where age=1;
+update (해당번호 수정) :  update userinfo_e set age=? where age=1;
+delete (해당번호 삭제) :  delete from userinfo_e where age=1;
