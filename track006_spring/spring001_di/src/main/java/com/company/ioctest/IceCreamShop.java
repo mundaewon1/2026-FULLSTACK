@@ -8,6 +8,14 @@ import lombok.NoArgsConstructor;
 public class IceCreamShop {
     private String shopName;
     private IceCream iceCream;
+    
+    public String getShopName() {
+        return shopName;
+    }
+
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
+    }
 
     public String serveFlavor() { return shopName + ">" + iceCream.flavor(); }
     public String serveScoop()  { return shopName + ">" + iceCream.scoop(); }

@@ -35,8 +35,18 @@
        <artifactId>lombok</artifactId>
        <version>1.18.18</version>
        <scope>provided</scope>
-   </dependency>    
+   </dependency>   
+   
+   <!-- 집에 추가 --> 
+   <dependency>
+    <groupId>javax.annotation</groupId>
+    <artifactId>javax.annotation-api</artifactId>
+    <version>1.3.2</version>
+   </dependency>
+   
   </dependencies>
+  
+  
     
   
 
