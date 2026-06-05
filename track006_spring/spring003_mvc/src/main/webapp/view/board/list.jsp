@@ -4,7 +4,16 @@
 <%@include file="../inc/header.jsp"  %>
 <!-- 	header		 -->
 <!-- 	header		 -->
+<script>
+window.addEventListener("load", function(){
+	let result = '${result}';  // el
+	console.log(result);	
+	
+	if( result == "글쓰기 실패" ){ alert(result); history.go(-1); }
+	else if(result.length != 0){ alert(result);				   }
+});
 
+</script>
     <!--  content -->
     <section class="container  my-5">
         <h3> MultiBoard </h3>
@@ -20,12 +29,27 @@
                 </tr>
             </thead>
             <tbody>
-
+            
+			<c:forEach var="dto" items="${list}" varStatus="Status">
+				<tr>   <!-- 전체갯수      -    상태.갯수   -->
+					<td>${ list.size() - status.index }</td>
+					<td>
+						<a href="${pageContext.request.contextPath}/board/detail.do?bno=${dto.bno}">
+							${ dto.btitle }
+						</a>
+					</td>
+					<td>${ dto.bname  }</td>
+					<td>${ dto.bdate  }</td>
+					<td>${ dto.bhit   }</td>
+				</tr>
+			</c:forEach>
+            
             </tbody>
         </table>
 
         <div  class="text-end">
-           <a href="write.jsp"  title="글쓰기 폼"  class="btn btn-primary" >글쓰기</a>
+           <a href="${pageContext.request.contextPath}/board/write.do"  
+              title="글쓰기 폼"  class="btn btn-primary" >글쓰기</a>
         </div>
 
     </section>
