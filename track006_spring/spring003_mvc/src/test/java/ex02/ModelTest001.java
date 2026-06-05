@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.the703.dao.BoardMapper;
 import com.the703.dao.TestMapper;
 import com.the703.dto.BoardDto;
+import com.the703.service.BoardService;
 
 @RunWith(SpringJUnit4ClassRunner.class)  //1. spring 구동테스트
 @ContextConfiguration(locations = "classpath:config/root-context.xml")  //2. 설정
@@ -28,8 +29,34 @@ public class ModelTest001 {
 	@Autowired TestMapper testMapper;
 	
 	@Autowired BoardMapper boardMapper;
+	@Autowired BoardService service;
 	
 	@Test
+	public void test5() {
+		//삭제
+		BoardDto dto3 = new BoardDto();  dto3.setBno(7);
+		System.out.println(service.delete(dto3));
+		
+		//수정
+//		BoardDto dto2 = new BoardDto();
+//		dto2.setBname("first");		dto2.setBpass("1111"); dto2.setBno(7);
+//		dto2.setBtitle("NEW-service-첫번째 글쓰기");	dto2.setBcontent("NEW-service-내용");
+//		System.out.println(service.edit(dto2));  //실행한 줄수1
+
+		//검색
+		System.out.println(service.detail(7));
+		
+		//삽입  -  7
+//		BoardDto dto = new BoardDto();
+//		dto.setBname("first");		dto.setBpass("1111");
+//		dto.setBtitle("service-첫번째 글쓰기");	dto.setBcontent("service-내용");
+//		System.out.println(service.insert(dto));
+//		
+//		//전체리스트
+//		System.out.println(service.selectAll());
+	}
+	
+	@Ignore @Test
 	public void test4() throws UnknownHostException {
 		//삭제
 //		System.out.println(boardMapper.delete(1));
