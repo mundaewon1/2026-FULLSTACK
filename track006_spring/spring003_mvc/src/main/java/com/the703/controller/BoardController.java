@@ -45,7 +45,7 @@ public class BoardController {
 		model.addAttribute("dto", service.detail(bno));
 		return "board/detail"; 
 	}
-	//테스트 : http://localhost:8080/spring003_mvc/board/detail.do
+	//테스트 : http://localhost:8080/spring003_mvc/boarSd/detail.do
 
 	//■4.  글수정폼 경로
 	@RequestMapping(value="/board/edit.do", method=RequestMethod.GET)
@@ -59,7 +59,7 @@ public class BoardController {
 	public String edit_post(BoardDto dto, RedirectAttributes rttr) {
 		// 알림창
 		String result = "비밀번호 확인";
-		if( service.edit(dto) > 0) {result = "글쓰기 성공";}
+		if( service.edit(dto) > 0) {result = "글수정 성공";}
 		rttr.addFlashAttribute("result", result);
 		return "redirect:/board/detail.do?bno=" + dto.getBno();
 	}
@@ -71,8 +71,8 @@ public class BoardController {
 	//테스트 : http://localhost:8080/spring003_mvc/board/delete.do
 	//■5.  글삭제 기능
 	@RequestMapping(value="/board/delete.do", method=RequestMethod.POST)
-	public String delete_post(int bno, RedirectAttributes rttr) {
-		BoardDto dto = new BoardDto(); dto.setBno(bno);
+	public String delete_post(BoardDto dto, RedirectAttributes rttr) {
+		
 		String result = "비밀번호 확인";
 		
 		if( service.delete(dto) > 0) { result = "삭제성공";}

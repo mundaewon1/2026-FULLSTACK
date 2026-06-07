@@ -11,6 +11,8 @@ public interface BoardMapper {
 	
 	public List<BoardDto> selectAll();
 	public	    BoardDto  select(int bno);
+	
+    public int updateHit(int bno);
 
 }
 
