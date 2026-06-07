@@ -4,6 +4,14 @@
 <%@include file="../inc/header.jsp"  %>
 <!-- 	header		 -->
 <!-- 	header		 -->
+<script>
+window.addEventListener("load", function(){
+	let result = '${result}'; // el
+	
+	if(result == "비밀번호 확인"){ alert(result); history.go(-1)}
+	else if(result.length != 0){ alert(result);}
+});
+</script>
    <div class="container my-5">
       <h3>글 상세보기</h3>
       <form  action ="#"  method="post">

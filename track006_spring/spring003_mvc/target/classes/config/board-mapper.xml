@@ -19,6 +19,9 @@
   	<select resultType="BoardDto" id="select" parameterType="int">
   		select * from mvcboard2  where  bno= #{bno}
   	</select>
+  	<update id="updateHit" parameterType="int">
+    	update mvcboard2  set bhit = bhit + 1  where bno = #{bno}
+</update>
 </mapper>
 
 <!--

@@ -19,12 +19,12 @@ public class BoardServiceImpl implements BoardService {
 	@Override public int insert(BoardDto dto) {
 		try {dto.setBip(InetAddress.getLocalHost().getHostAddress());} 
 		catch (UnknownHostException e) {e.printStackTrace();}
-		System.out.println(dao.insert(dto));
 		return dao.insert(dto);
 	}
 
 	@Override public BoardDto detail(int bno) {
 		// 조회수 올리기
+		dao.updateHit(bno);
 		return dao.select(bno);
 	}
 
@@ -32,12 +32,16 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override public int edit(BoardDto dto) {
 		// 비번맞으면 수정
-		return dao.update(dto);
+		BoardDto bdto = dao.select(dto.getBno());
+		if(bdto.getBpass().equals(dto.getBpass())) { return dao.update(dto); }
+		return 0;
 	}
 
 	@Override public int delete(BoardDto dto) {
 		// 비번맞으면 삭제
-		return dao.delete(dto.getBno());
+		BoardDto bdto = dao.select(dto.getBno());
+		if(bdto.getBpass().equals(dto.getBpass())) { return dao.delete(dto.getBno()); }
+		return 0;
 	}
 	
 
