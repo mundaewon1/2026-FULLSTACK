@@ -12,6 +12,7 @@ public class BoardDto {
 	private String bdate;
 	private int bhit;
 	private String bip;
+	private String bfile;
 	
 }
 //bno	int	NO	PRI		auto_increment
