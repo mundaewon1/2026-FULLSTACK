@@ -30,6 +30,10 @@ window.addEventListener("load", function(){
       		<textarea  class="form-control"    id="bcontent"  
       			   name="bcontent"  readonly >${dto.bcontent}</textarea>
       	</div>
+      	<div class="my-3">
+      		<img src="${pageContext.request.contextPath}/upload/${dto.bfile}"
+      		     alt="${dto.btitle}" class="w-50" />
+      	</div>
       	<div  class="my-3  text-end"> 
       		<a href="${pageContext.request.contextPath}/board/edit.do?bno=${dto.bno}"  class="btn btn-outline-primary"  title="글수정">수정</a>
       		<a href="${pageContext.request.contextPath}/board/delete.do?bno=${dto.bno}"  class="btn btn-outline-success"  title="글삭제">삭제</a>

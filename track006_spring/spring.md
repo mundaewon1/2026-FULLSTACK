@@ -307,8 +307,8 @@ mysql> desc userinfo_e;
 3 rows in set (0.01 sec) 
 
 >2. crud - insert, select, update, delete
-insert : insert into userinfo_e(no,email,age) values(1,'',22);
-select (전체): select * from userinfo_e;
-select (해당번호의 읽기): select * from userinfo_e where age=1;
-update (해당번호 수정) :  update userinfo_e set age=? where age=1;
-delete (해당번호 삭제) :  delete from userinfo_e where age=1;
+insert                : insert into userinfo_e(no,email,age) values(?,?,?);
+select (전체)         : select * from userinfo_e;
+select (해당번호의 읽기): select * from userinfo_e where age=?;
+update (해당번호 수정) :  update userinfo_e set email=?, age=? where age=?;
+delete (해당번호 삭제) :  delete from userinfo_e where no=?;

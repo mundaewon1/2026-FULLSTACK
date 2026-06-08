@@ -5,10 +5,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.the703.dto.BoardDto;
 import com.the703.service.BoardService;
+import com.the703.util.PagingUtil;
 
 @Controller
 public class BoardController {
@@ -16,9 +19,17 @@ public class BoardController {
 	@Autowired BoardService service;
 
 	//■1. 전체리스트
+	//	@RequestMapping("/board/list.do")
+	//	public String list(Model model) { 
+	//		model.addAttribute("list", service.selectAll());
+	//		return "board/list"; 
+	//	}
+
 	@RequestMapping("/board/list.do")
-	public String list(Model model) { 
-		model.addAttribute("list", service.selectAll());
+	public String list(Model model , @RequestParam(value="pstartno", defaultValue = "1") int pstartno) {
+		
+		model.addAttribute("paging", new PagingUtil( service.selectCnt() , pstartno) );  /* service전체갯수 */		
+		model.addAttribute("list", service.select10(pstartno));      /* list10 */
 		return "board/list"; 
 	}
 	//			 /view(폴더) + board(폴더)/list(파일명)  +  .jsp (확장자)
@@ -31,10 +42,12 @@ public class BoardController {
 	
 	//■2. 글쓰기 기능
 	@RequestMapping( value="/board/write.do", method=RequestMethod.POST)
-	public String write_post(BoardDto dto , RedirectAttributes rttr) {  
+	public String write_post(BoardDto dto , 
+			@RequestParam("file") MultipartFile file,
+			RedirectAttributes rttr) {  
 		String result ="글쓰기 실패";
 		
-		if(service.insert(dto) > 0) {result = "글쓰기 성공";}
+		if(service.insert(dto , file) > 0) {result = "글쓰기 성공";}
 		rttr.addFlashAttribute("result", result);  //  Flash - 1번만동작
 		return "redirect:/board/list.do";  //response.sendRedirect + alert (x)
 	}
@@ -56,10 +69,12 @@ public class BoardController {
 	//테스트 : http://localhost:8080/spring003_mvc/board/edit.do
 	//■4.  글수정 기능
 	@RequestMapping(value="/board/edit.do", method=RequestMethod.POST)
-	public String edit_post(BoardDto dto, RedirectAttributes rttr) {
+	public String edit_post(BoardDto dto,
+			@RequestParam("file") MultipartFile file,
+			RedirectAttributes rttr) {
 		// 알림창
 		String result = "비밀번호 확인";
-		if( service.edit(dto) > 0) {result = "글수정 성공";}
+		if( service.edit(dto , file) > 0) {result = "글수정 성공";}
 		rttr.addFlashAttribute("result", result);
 		return "redirect:/board/detail.do?bno=" + dto.getBno();
 	}
