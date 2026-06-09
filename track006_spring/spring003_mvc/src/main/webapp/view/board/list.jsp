@@ -33,9 +33,11 @@ window.addEventListener("load", function(){
                 </tr>
             </thead>
             <tbody>
-            <c:forEach var="dto" items="${list}" varStatus="Status">
-				<tr>   <!-- 전체갯수      -    상태.갯수   -->
-					<td>${ dto.bno }</td>
+            <c:forEach var="dto" items="${list}" varStatus="status">
+				<tr> <!-- 전체갯수(256)   -    상태.갯수   (-1)
+						  2) 전체갯수-0 256~247 /-10 246~237 /-20 236~227
+					-->
+					<td>${ paging.listtotal - paging.pstartno - status.index }</td>
 					<td>
 						<a href="${pageContext.request.contextPath}/board/detail.do?bno=${dto.bno}">
 							${ dto.btitle }
@@ -50,6 +52,11 @@ window.addEventListener("load", function(){
             <tfoot><tr><td colspan="5">
             	<ul class="pagination justify-content-center">
             	<!-- 이전 -->
+            	<c:if test="${paging.start > paging.bottomlist}">
+            		<li class="page-item">
+            			<a href="?pstartno=${paging.start-1}" class="page-link">이전</a>
+            		</li>
+            	</c:if>
             	
             	<!-- 1,2,3,4,5,6,7,8,,10 -->
             	<c:forEach var="i" begin="${paging.start}" end="${paging.end}">
@@ -58,8 +65,12 @@ window.addEventListener("load", function(){
             		</li>
             	</c:forEach>
             	
-            	<!-- 다음 -->
-            	
+            	<!-- 다음 - 다음글이 있다면  -  하단의전체 > end  -->
+            	<c:if test="${paging.pagetotal > paging.end}">
+            		<li class="page-item">
+            			<a href="?pstartno=${paging.end+1}" class="page-link">다음</a>
+            		</li>
+            	</c:if>
             </ul></td></tr>
             </tfoot>
         </table>
