@@ -1,24 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="../inc/header.jsp" %>
 
+<script>
+	window.addEventListener("load", function(){
+		let success = '${success}';
+		
+		if( success == "가입 실패"){ alert(success); history.go(-1);}
+		else if(success.length != 0){ alert(success);}
+	})
+</script>
 <div class="container my-5">
   <h3>로그인</h3>
   <!-- 2. Login
-	> 로그인폼  -  Get
-	> 로그인처리 - Post
-	1) 처리서블릿   : LoginAction
-	2) 데이터 노출  : x
-	3) 보관데이터   : bpass , email  
-	4) 처리경로     : 처리후 마이페이지로   (MyAction - Get) 
-   -->
-  <form action="" method="post" onsubmit="return checkForm()">
+	★1) 처리해결사   : login
+	 2) 데이터 노출  : post
+	★3) 보관데이터   : username , password  
+	csrf (Cross-Site Request Forgery)  사이트간 요청 위조방지
+	-->
+  <form action="${pageContext.request.contextPath}/login" method="post" onsubmit="return checkForm()">
+    <input type="hidden"  name="${_csrf.parameterName}"  value="${_csrf.token}" />
     <div class="my-3">
       <label for="email" class="form-label">이메일</label>
-      <input type="email" class="form-control" id="email" name="email" />
+      <input type="email" class="form-control" id="email" name="username" />
     </div>
     <div class="my-3">
       <label for="bpass" class="form-label">비밀번호</label>
-      <input type="password" class="form-control" id="bpass" name="bpass" />
+      <input type="password" class="form-control" id="bpass" name="password" />
     </div>
     <div class="text-end">
       <button type="reset" class="btn btn-outline-primary">취소</button>
