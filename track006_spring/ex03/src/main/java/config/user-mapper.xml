@@ -16,6 +16,9 @@
 	<select resultType="string" id="findByEmail" parameterType="string">
     select    email from users where email=#{email}
 	</select>
+	<select resultType="UserDto" id="findByEmailUserInfo" parameterType="string">
+    select    * from users        where email=#{email}
+	</select>
 	
 	<!-- authorities -->
 	<!-- authorities -->
@@ -34,7 +37,7 @@
 	</resultMap>
 	<resultMap id="authMap" 		type="AuthDto">
 		<result property="email" 	  column="email"   />
-		<result property="auth"   	  column="auth"   />
+		<result property="auth"   	  column="auth"    />
 	</resultMap>
 	
 	

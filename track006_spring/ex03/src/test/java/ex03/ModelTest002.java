@@ -26,10 +26,15 @@ public class ModelTest002 {
 	@Autowired UserService service;
 	@Autowired @Qualifier("passwordEncoder") PasswordEncoder pwencoder;
 	
+	@Test public void test4() {
+		AuthDto dto2 = new AuthDto();	dto2.setEmail("a@a");
+		System.out.println(user.readAuth(dto2));
+	}
+	
 	/*   security   */
-	@Test public void test3() {
+	@Ignore @Test public void test3() {
 
-		/* 권한2개 - 회원, ADMIN */
+		/* 권한2개 - 회원, ADMIN 로그인시 인가 */
 		AuthDto dto1 = new AuthDto();	dto1.setEmail("a@a");
 		System.out.println(user.readAuth(dto1));
 		/* 권한2개 줬으면 주석달고 위에 해당유저정보가져오기 */
