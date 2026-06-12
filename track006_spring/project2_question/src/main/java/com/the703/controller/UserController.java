@@ -1,0 +1,58 @@
+package com.the703.controller;
+
+import java.security.Principal;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.the703.dto.UserDto;
+import com.the703.service.UserService;
+
+@Controller
+public class UserController {
+
+	@Autowired  UserService service;
+	
+	@RequestMapping( "/" )
+	public String index() {  return "redirect:/users/login"; }
+
+	 
+	///////////////////////////////////////
+	@RequestMapping( value="/users/join" , method=RequestMethod.GET  )
+	public String join() {  return "users/join"; }
+	 
+	@RequestMapping( value="/users/login" , method=RequestMethod.GET  )
+	public String login() {  return "users/login"; }
+	 
+	@RequestMapping(value="/users/join", method=RequestMethod.POST)
+    public String join(UserDto dto) {
+        service.insert(dto);
+        return "redirect:/users/login";
+    }
+	
+	@RequestMapping("/users/mypage")
+	public String mypage(Principal principal, Model model) {
+
+	    // 로그인 사용자 정보 확인
+	    System.out.println("............." + principal);
+	    System.out.println("............." + principal.getName()); // email
+
+	    // DB에서 회원 정보 조회
+	    model.addAttribute(
+	        "dto",
+	        service.findByEmailUserInfo(principal.getName())
+	    );
+
+	    return "users/mypage";
+	}
+	
+}
