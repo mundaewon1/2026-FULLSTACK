@@ -24,9 +24,8 @@ CREATE TABLE questions (
   parent_id INT NOT NULL, -- 상위 엔티티 ID (모임ID 또는 관리자 영역 ID)
   member_id INT NOT NULL, -- 질문 작성자 ID (members 테이블 참조)
   category ENUM('MEETUP','ADMIN') DEFAULT 'MEETUP', -- 질문 출처 구분 (모임/관리자)
-  title VARCHAR(200), -- 질문 제목
   content TEXT NOT NULL, -- 질문 내용
-  status ENUM('PENDING','ANSWERED') DEFAULT 'PENDING', -- 질문 상태 (처리대기/답변완료)
+  status ENUM('PENDING','ANSWERED') DEFAULT 'PENDING', -- 질문 상태 (처리대기/처리완료)
   is_public ENUM('Y','N') DEFAULT 'Y', -- 공개 여부 (Y=공개, N=비공개)
   delete_yn CHAR(1) DEFAULT 'N', -- 삭제 여부 (N=정상, Y=삭제)
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP, -- 생성일시
@@ -37,7 +36,7 @@ CREATE TABLE questions (
 CREATE TABLE answers (
   answer_id INT AUTO_INCREMENT PRIMARY KEY, -- 답변 고유 ID (PK)
   question_id INT NOT NULL UNIQUE, -- 연결된 질문 ID (질문당 답변 1개만 허용)
-  member_id INT NOT NULL, -- 답변 작성자 ID (개설자/관리자)
+  member_id INT NOT NULL, -- 답변 작성자 ID (게시자/관리자)
   content TEXT NOT NULL, -- 답변 내용
   is_public ENUM('Y','N') DEFAULT 'Y', -- 공개 여부 (Y=공개, N=비공개)
   delete_yn CHAR(1) DEFAULT 'N', -- 삭제 여부 (N=정상, Y=삭제)
