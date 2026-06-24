@@ -170,3 +170,10 @@ insert into t3(no, name) values(2,'second');
 insert into t4(ino) values(2);
 
 (8) 부모수정시 자식값들도 수정, 부모삭제시 자식값들도 삭제 확인
+update t3 set no=20 where no=2;
+select * from t3;
+select * from t4;
+
+delete from t3 where no=20;
+select * from t3;
+select * from t4;

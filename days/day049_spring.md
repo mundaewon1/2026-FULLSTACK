@@ -73,7 +73,7 @@ UserDetailsService
 4. SecurityController
 
 1) insert 구문찾기 first@gmail.com / ROLE_MEMBER
-    insert into authorites (email, auth) values ('first@gmail.com','ROLE_MEMBER')
+    insert into authorities (email, auth) values ('first@gmail.com','ROLE_MEMBER')
 2) join 이용해서  first@gmail.com의 email, bpass, auth 필드값찾기
     select  u.email, u.bpass, a.auth
     from    users u left join authorities a  on u.email = a.email
