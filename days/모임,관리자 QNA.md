@@ -60,3 +60,27 @@ CREATE TABLE answers (
 | 2 | 2 | 999 | 장소는 본관 2층으로 변경되었습니다. | N | N | 2026-06-16 17:40 |
 
 
+수정)
+1. erd - answer( member_id) 수정
+
+개발)
+1. dto
+
+2. mapper
+1page)  [question]  select(페이징) , select(검색 )
+  select * from question  order by qno desc  limit 0,10
+  select count(*) from question
+  select * from question where title=?
+
+2page)  [quesiton]  insert( 문의등록페이지 )
+3page)  [quesiton]  select( 상세페이지 ),  delete( 삭제 )
+4page)  [quesiton]  select( 수정폼 ) , update( 수정기능 ) 
+.....................................................
+
+5page)  [answer]   insert ( 답변등록페이지 )
+6page)  [answer]   delete ( 삭제 )
+7page)  [answer]   select( 수정폼 ) , update( 수정기능 )
+
+3. service
+4. controller
+5. view

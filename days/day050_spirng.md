@@ -247,15 +247,15 @@
     1. test-mapper.xml  / TestMapper
        select now()       public String now()
 
-
+................................................
+................................................
 - [ ] 7. 개발 - Model
-    1) boardDto   - com.the703.dto / mybatis-config.xml
+    1) boardDto   -  mybatis-config.xml
     2) BoardMapper , board-mapper.xml   - root-context.xml
     3) BoardService, BoardServiceImpl
 
 - [ ] 8. 개발 - Controller
-    4) BoardController   - Service 사용
+    4) BoardController   - Service 사용 - security-context.xml (허용)
 
 - [ ] 9. 개발 - View
-    5) [view]-[board]
- 
+    5) [view]-[board]    - csrf
