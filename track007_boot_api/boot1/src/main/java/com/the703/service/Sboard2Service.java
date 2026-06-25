@@ -8,7 +8,7 @@ import com.the703.dto.Sboard2Dto;
 
 public interface Sboard2Service {
 	//1. 전체페이징
-	public List<Sboard2Dto> list10(int pagaNo);
+	public List<Sboard2Dto> list10(int pageNo);
 	//2. 갯수카운트
 	public int				selectCnt();
 	//3. 상세조회 ( 조회수올리기 )
