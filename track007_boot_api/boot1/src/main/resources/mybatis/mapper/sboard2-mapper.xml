@@ -10,9 +10,9 @@
 	  ( sboard2_seq.nextval, #{appUserId}, #{btitle}, #{bcontent}, #{bpass}, #{bfile, jdbcType=VARCHAR}, #{bip} )
   </insert>
   
-  <select id="selectAll" resultType="string"> select * from sboard2 order by id desc </select>
+  <select id="selectAll" resultType="Sboard2Dto"> select * from sboard2 order by id desc </select>
   
-  <select id="selectPaging" resultType="string">
+  <select id="selectPaging" resultType="Sboard2Dto">
  	 SELECT * FROM sboard2 ORDER BY id DESC OFFSET #{start} ROWS FETCH NEXT #{end} ROWS ONLY
   </select>
   
@@ -23,7 +23,9 @@
   <update id="updateHit" parameterType="Sboard2Dto"> update sboard2 set bhit=bhit+1 where id=#{id} </update>
 
   <update id="update" parameterType="Sboard2Dto"> update sboard2
-  	 set btitle=#{btitle}, bcontent=#{bcontent}, bfile=#{bfile, jdbcType=VARCHAR} where id=#{id} </update>
+  	 set btitle=#{btitle}, bcontent=#{bcontent}, bfile=#{bfile, jdbcType=VARCHAR} 
+  	 where id=#{id} and bpass=#{bpass}</update>
   
-  <delete id="delete" parameterType="Sboard2Dto"> delete from sboard2 where id=#{id} </delete>
+  <delete id="delete" parameterType="Sboard2Dto"> 
+  	 delete from sboard2 where id=#{id} and bpass=#{bpass} </delete>
 </mapper>
