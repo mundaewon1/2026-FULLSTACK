@@ -3,41 +3,57 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.the703.dao.AppUserDao">
-  <insert id="insertAppUser" parameterType="AppUserDao">
+  <insert id="insertAppUser" parameterType="AppUserDto">
 	  	insert into appuser(APP_USER_ID,EMAIL,PASSWORD,MBTI_TYPE_ID,CREATED_AT,UFILE,MOBILE,NICKNAME,PROVIDER,PROVIDER_ID) 
-	  	values       ( #{appUserId}, #{email}, #{password}, #{mbtiTypeId}, #{creatdAt}, #{ufile, jdbcType=VARCHAR}, #{mobile}, #{nickname}, #{provider}, #{providerId});
+	  	values       (APPUSER_SEQ.NEXTVAL, #{email}, #{password}, #{mbtiTypeId}, SYSDATE, #{ufile, jdbcType=VARCHAR}, #{mobile}, #{nickname}, #{provider}, #{providerId})
   </insert>
   
-  <select id="readAuthByEmail" resultType="AppUserDao" parameterType="AppUserDao">
+  <resultMap id="AppUserAuthResultMap" type="AppUserAuthDto">
+    <result property="email" column="email"/>
+    <result property="password" column="password"/>  
+    <collection property="authList" ofType="com.the703.dto.AuthDto">
+        <result property="auth" column="auth"/>
+    </collection>
+  </resultMap>
+  
+  <select id="readAuthByEmail" resultMap="AppUserAuthResultMap" parameterType="AppUserAuthDto">
   		select u.email, u.password, a.auth
 		from appuser u left join authorities a on u.email =  a.email 
-		where u.email = #{email};
+		where u.email = #{email}
   </select>
   
-  <select id="findByEmail" resultType="AppUserDao" parameterType="AppUserDao">
-  		select * from appuser where email = #{email};
+  <select id="findByEmail" resultType="AppUserDto" parameterType="AppUserDto">
+  		select * from appuser where email = #{email}
   </select>
   
-  <select id="iddoubleByEmail" resultType="AppUserDao" parameterType="AppUserDao">
-  		select count(*) from appuser where email=#{email};
+  <select id="iddoubleByEmail" resultType="int" parameterType="AppUserDto">
+  		select count(*) from appuser where email=#{email}
   </select>
   
-  <update id="updateAppUser" parameterType="AppUserDao">
+  <update id="updateAppUser" parameterType="AppUserDto">
 		update appuser
-		set    password = #{password}, mbti_type_id = #{mbtiTypeId}, ufile = #{ufile}, nickname = #{nickname},
-		mobile = #{mobile}, provider = #{provider}, provider_id = #{providerId}
-		where app_user_id = #{appUserId};
+		  <set>
+		      <!-- <if test="password    != null"> password=#{password} ,       </if> -->
+		      <if test="mbtiTypeId  != null"> mbti_type_id=#{mbtiTypeId} , </if>
+		      <if test="ufile       != null"> ufile  = #{ufile} ,          </if>
+		      <if test="nickname    != null"> nickname=#{nickname}  ,      </if>
+		      <if test="mobile      != null"> mobile=#{mobile} ,           </if>
+		      <if test="provider    != null"> provider=#{provider} ,       </if>
+		      <if test="providerId  != null"> provider_id=#{providerId}    </if>
+		  </set>    
+		where app_user_id = #{appUserId}
   </update>
   
-  <delete id="deleteAppUser" parameterType="AppUserDao">
-  		delete from appuser where app_user_id=#{appUserId};
+  <delete id="deleteAppUser" parameterType="AppUserDto">
+  		delete from appuser where app_user_id=#{appUserId}
   </delete>
   
   <insert id="insertAuth" parameterType="AuthDto">
   		insert into authorities ( AUTH_ID, EMAIL, AUTH)
-		values                  ( #{authId}, #{email}, #{auth});
+		values                  ( authorities_seq.NEXTVAL, #{email}, #{auth})
   </insert>
   
   <delete id="deleteAuth" parameterType="AuthDto">
-  		delete from authorities where email = #{email};
+  		delete from authorities where email = #{email}
   </delete>
+</mapper>
