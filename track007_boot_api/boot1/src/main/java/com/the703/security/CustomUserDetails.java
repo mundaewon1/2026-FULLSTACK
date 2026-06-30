@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import com.the703.dto.AppUserAuthDto;
 import com.the703.dto.AppUserDto;
@@ -16,7 +17,7 @@ import com.the703.dto.AppUserDto;
 import lombok.Getter;
 
 @Getter
-public class CustomUserDetails implements UserDetails {  // UserDetails(security), oauth2-client
+public class CustomUserDetails implements UserDetails , OAuth2User{  // UserDetails(security), oauth2-client
 	/**
 	 * 
 	 */
@@ -33,7 +34,6 @@ public class CustomUserDetails implements UserDetails {  // UserDetails(security
 		this.attirubutes.put("email"   , user.getEmail());
 		this.attirubutes.put("provider", user.getProvider());
 	}
-	/////////////////////////////////////////
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() { 
        if( authDto == null ||   authDto.getAuthList()  == null ||  authDto.getAuthList().isEmpty() ) {
@@ -52,4 +52,21 @@ public class CustomUserDetails implements UserDetails {  // UserDetails(security
 	public Integer getAppUserId() { return user.getAppUserId(); }
 	public String  getEmail() {     return user.getEmail();     }
 	public String  getProvider() {  return user.getProvider();  }
+	
+	///////////////////////////////////////////////////////////////////		social
+	// java : alt + shift + s
+	public CustomUserDetails(AppUserDto user, Map<String, Object> attirubutes) {
+		super();
+		this.user 		 = user;
+		this.authDto 	 = new AppUserAuthDto();
+		this.attirubutes = new HashMap<>(attirubutes  != null ? attirubutes : Map.of()) ;
+		this.attirubutes.put("email"   , user.getEmail());
+		this.attirubutes.put("provider", user.getProvider());
+	}
+	
+	@Override public Map<String, Object> getAttributes() { return attirubutes;	}
+			  public void setAttributes( Map<String, Object> attirubutes ) {this.attirubutes = attirubutes;}
+	
+	@Override public String getName() { return user.getEmail() + ":" + user.getProvider();}
+
 }
