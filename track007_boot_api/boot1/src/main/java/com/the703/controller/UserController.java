@@ -43,7 +43,6 @@ public class UserController {
 	}	
 	
 	@GetMapping("/join")   public String joinFrom()   { return "users/join"; }
-	
 	@PostMapping("/join")   public String join( @RequestParam(value="file", required = false)MultipartFile file 
 														, AppUserDto dto , RedirectAttributes rttr)  {
 		try {
@@ -81,7 +80,7 @@ public class UserController {
 		}		
 		//2. social
 		model.addAttribute("dto", service.selectEmail(email, provider));
-		return "users/update"; 
+		return "users/mypage"; 
 	}
 	
 	/*  수정 				 */
