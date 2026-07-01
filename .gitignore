@@ -19,3 +19,5 @@ Servers/
 # OS별 임시파일
 *.DS_Store
 Thumbs.db
+
+track007_boot_api/boot1/src/main/resources/application-oauth.properties
