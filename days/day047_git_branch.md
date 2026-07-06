@@ -18,7 +18,7 @@ git checkout 브랜치이름                -- 브랜치 바꾸기
 
 ```
 git checkout -b feature-m 생성
-git checkout -d feature-m 삭제
+git branch -d feature-qna
 ```
 
 3. 작업 후 커밋하기
