@@ -1,11 +1,12 @@
 select * from questions;
 
 SELECT table_name FROM user_tables; -- 테이블 목록
-
-desc questions;
+select *
+from questions;
+SHOW USER;
 create sequence question_seq;
-create sequence answers_seq;
-create sequence notifications_seq;
+create sequence answer_seq;
+create sequence notification_seq;
 
 CREATE TABLE questions (
     question_id NUMBER PRIMARY KEY, -- 질문 고유 ID (PK)
@@ -110,3 +111,5 @@ create table members(
         foreign key(status_id)
         references member_status(status_id)
 );
+
+commit;
