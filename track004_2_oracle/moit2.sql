@@ -1,12 +1,13 @@
 select * from questions;
+ALTER SEQUENCE question_seq RESTART START WITH 1;
 
 SELECT table_name FROM user_tables; -- 테이블 목록
-select *
-from questions;
-SHOW USER;
+select * from questions;
+select * from answers;
 create sequence question_seq;
 create sequence answer_seq;
 create sequence notification_seq;
+update questions set delete_yn='N' where delete_yn='Y';
 
 CREATE TABLE questions (
     question_id NUMBER PRIMARY KEY, -- 질문 고유 ID (PK)
@@ -111,5 +112,38 @@ create table members(
         foreign key(status_id)
         references member_status(status_id)
 );
+
+CREATE SEQUENCE MEETUPS_SEQ
+START WITH 1
+INCREMENT BY 1
+NOCACHE
+NOCYCLE;
+
+CREATE TABLE meetups (
+    meetup_id          NUMBER PRIMARY KEY,
+    member_id          NUMBER NOT NULL,
+    title              VARCHAR2(100) NOT NULL,
+    content            CLOB NOT NULL,
+    max_participants   NUMBER NOT NULL,
+    min_participants   NUMBER NOT NULL,
+    sigungu_id         NUMBER NOT NULL,
+    category_id        NUMBER NOT NULL,
+    address            VARCHAR2(255),
+    address_detail     VARCHAR2(255), -- 상세 주소
+    meetup_at          DATE NOT NULL,
+
+    status             VARCHAR2(20) DEFAULT 'RECRUITING' NOT NULL,
+
+    latitude           NUMBER(10,7), -- 위도
+    longitude          NUMBER(11,7), -- 경도    
+    weather_status     VARCHAR2(20), -- 감지된 날씨
+    rain_probability   NUMBER(3), -- 감지된 강수확률 (0~100)
+
+    delete_yn          CHAR(1) DEFAULT 'N' NOT NULL,
+    created_at         DATE DEFAULT SYSDATE NOT NULL,
+    updated_at         DATE DEFAULT SYSDATE NOT NULL
+);
+
+
 
 commit;
