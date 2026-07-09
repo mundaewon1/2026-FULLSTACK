@@ -7,7 +7,6 @@ select * from answers;
 create sequence question_seq;
 create sequence answer_seq;
 create sequence notification_seq;
-update questions set delete_yn='N' where delete_yn='Y';
 
 CREATE TABLE questions (
     question_id NUMBER PRIMARY KEY, -- 질문 고유 ID (PK)
