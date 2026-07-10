@@ -1,12 +1,48 @@
+commit;
+
 select * from questions;
 ALTER SEQUENCE question_seq RESTART START WITH 1;
 
 SELECT table_name FROM user_tables; -- 테이블 목록
 select * from questions;
 select * from answers;
+SELECT * FROM question_ai_analysis;
 create sequence question_seq;
 create sequence answer_seq;
 create sequence notification_seq;
+
+delete from questions;
+select * from members;
+
+INSERT INTO questions (
+    question_id,
+    parent_id,
+    member_id,
+    category,
+    title,
+    content,
+    status,
+    is_public,
+    delete_yn,
+    created_at,
+    updated_at
+)
+SELECT
+    question_seq.NEXTVAL,
+    MOD(LEVEL, 10) + 1,
+    31,    -- 모든 문의를 31번 회원이 작성한 것으로 설정
+    CASE WHEN MOD(LEVEL, 2) = 0 THEN 'MEETUP' ELSE 'ADMIN' END,
+    '테스트 문의 제목 ' || LEVEL,
+    '테스트 문의 내용 ' || LEVEL,
+    CASE WHEN MOD(LEVEL, 3) = 0 THEN 'ANSWERED' ELSE 'PENDING' END,
+    'Y',
+    'N',
+    SYSDATE,
+    SYSDATE
+FROM dual
+CONNECT BY LEVEL <= 200;
+
+COMMIT;
 
 CREATE TABLE questions (
     question_id NUMBER PRIMARY KEY, -- 질문 고유 ID (PK)
@@ -143,6 +179,27 @@ CREATE TABLE meetups (
     updated_at         DATE DEFAULT SYSDATE NOT NULL
 );
 
+ALTER TABLE advertisement_click_log
+ADD position VARCHAR2(50);
 
+ALTER TABLE advertisement_click_log
+ADD CONSTRAINT chk_click_position
+CHECK(position IN (
+'MAIN',
+'MEETUP_LIST_BANNER',
+'MEETUP_LIST_SIDEBAR',
+'MEETUP_DETAIL_SIDEBAR'
+));
 
-commit;
+ALTER TABLE advertisement_impression_log
+ADD position VARCHAR2(50);
+
+ALTER TABLE advertisement_impression_log
+ADD CONSTRAINT chk_impression_position
+CHECK(position IN (
+'MAIN',
+'MEETUP_LIST_BANNER',
+'MEETUP_LIST_SIDEBAR',
+'MEETUP_DETAIL_SIDEBAR'
+));
+
