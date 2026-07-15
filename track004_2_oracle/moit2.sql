@@ -1,6 +1,5 @@
 commit;
 
-select * from questions;
 ALTER SEQUENCE question_seq RESTART START WITH 1;
 
 SELECT table_name FROM user_tables; -- 테이블 목록
@@ -10,9 +9,16 @@ SELECT * FROM question_ai_analysis;
 create sequence question_seq;
 create sequence answer_seq;
 create sequence notification_seq;
+<link rel="stylesheet" th:href="@{/css/qnaStyle.css}">
+SELECT * FROM MEMBERS;
 
-delete from questions;
-select * from members;
+SELECT * FROM notifications;
+
+update question_ai_analysis set analysis_status='NORMAL' where analysis_status='PENDING_REVIEW';
+
+update members set member_type_id = 3 where email='1@1';
+
+commit;
 
 INSERT INTO questions (
     question_id,
@@ -147,59 +153,4 @@ create table members(
         foreign key(status_id)
         references member_status(status_id)
 );
-
-CREATE SEQUENCE MEETUPS_SEQ
-START WITH 1
-INCREMENT BY 1
-NOCACHE
-NOCYCLE;
-
-CREATE TABLE meetups (
-    meetup_id          NUMBER PRIMARY KEY,
-    member_id          NUMBER NOT NULL,
-    title              VARCHAR2(100) NOT NULL,
-    content            CLOB NOT NULL,
-    max_participants   NUMBER NOT NULL,
-    min_participants   NUMBER NOT NULL,
-    sigungu_id         NUMBER NOT NULL,
-    category_id        NUMBER NOT NULL,
-    address            VARCHAR2(255),
-    address_detail     VARCHAR2(255), -- 상세 주소
-    meetup_at          DATE NOT NULL,
-
-    status             VARCHAR2(20) DEFAULT 'RECRUITING' NOT NULL,
-
-    latitude           NUMBER(10,7), -- 위도
-    longitude          NUMBER(11,7), -- 경도    
-    weather_status     VARCHAR2(20), -- 감지된 날씨
-    rain_probability   NUMBER(3), -- 감지된 강수확률 (0~100)
-
-    delete_yn          CHAR(1) DEFAULT 'N' NOT NULL,
-    created_at         DATE DEFAULT SYSDATE NOT NULL,
-    updated_at         DATE DEFAULT SYSDATE NOT NULL
-);
-
-ALTER TABLE advertisement_click_log
-ADD position VARCHAR2(50);
-
-ALTER TABLE advertisement_click_log
-ADD CONSTRAINT chk_click_position
-CHECK(position IN (
-'MAIN',
-'MEETUP_LIST_BANNER',
-'MEETUP_LIST_SIDEBAR',
-'MEETUP_DETAIL_SIDEBAR'
-));
-
-ALTER TABLE advertisement_impression_log
-ADD position VARCHAR2(50);
-
-ALTER TABLE advertisement_impression_log
-ADD CONSTRAINT chk_impression_position
-CHECK(position IN (
-'MAIN',
-'MEETUP_LIST_BANNER',
-'MEETUP_LIST_SIDEBAR',
-'MEETUP_DETAIL_SIDEBAR'
-));
 
