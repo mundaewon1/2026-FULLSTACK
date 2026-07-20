@@ -9,7 +9,7 @@ SELECT * FROM question_ai_analysis;
 create sequence question_seq;
 create sequence answer_seq;
 create sequence notification_seq;
-<link rel="stylesheet" th:href="@{/css/qnaStyle.css}">
+
 SELECT * FROM MEMBERS;
 
 SELECT * FROM notifications;
@@ -18,37 +18,7 @@ update question_ai_analysis set analysis_status='NORMAL' where analysis_status='
 
 update members set member_type_id = 3 where email='1@1';
 
-commit;
-
-INSERT INTO questions (
-    question_id,
-    parent_id,
-    member_id,
-    category,
-    title,
-    content,
-    status,
-    is_public,
-    delete_yn,
-    created_at,
-    updated_at
-)
-SELECT
-    question_seq.NEXTVAL,
-    MOD(LEVEL, 10) + 1,
-    31,    -- 모든 문의를 31번 회원이 작성한 것으로 설정
-    CASE WHEN MOD(LEVEL, 2) = 0 THEN 'MEETUP' ELSE 'ADMIN' END,
-    '테스트 문의 제목 ' || LEVEL,
-    '테스트 문의 내용 ' || LEVEL,
-    CASE WHEN MOD(LEVEL, 3) = 0 THEN 'ANSWERED' ELSE 'PENDING' END,
-    'Y',
-    'N',
-    SYSDATE,
-    SYSDATE
-FROM dual
-CONNECT BY LEVEL <= 200;
-
-COMMIT;
+delete from questions;
 
 CREATE TABLE questions (
     question_id NUMBER PRIMARY KEY, -- 질문 고유 ID (PK)
@@ -154,3 +124,187 @@ create table members(
         references member_status(status_id)
 );
 
+
+-- ==========================
+-- 질문
+-- ==========================
+
+INSERT INTO questions VALUES (
+101, 1, 12, 'MEETUP',
+'주말 등산 모임 신청 가능한가요?',
+'이번 주 토요일 등산 모임에 참여하려고 합니다. 아직 신청 가능한지 궁금합니다.',
+'PENDING','Y','N',
+TIMESTAMP '2026-07-01 10:12:00',
+TIMESTAMP '2026-07-01 10:12:00'
+);
+
+INSERT INTO question_ai_analysis VALUES
+(101,'NORMAL',8);
+
+------------------------------------------------------------
+
+INSERT INTO questions VALUES (
+102,1,18,'MEETUP',
+'참가비는 어떻게 결제하나요?',
+'현장 결제인지 사전 계좌이체인지 알고 싶습니다.',
+'ANSWERED','Y','N',
+TIMESTAMP '2026-07-02 14:20:00',
+TIMESTAMP '2026-07-02 16:35:00'
+);
+
+INSERT INTO question_ai_analysis VALUES
+(102,'NORMAL',5);
+
+------------------------------------------------------------
+
+INSERT INTO questions VALUES (
+103,2,21,'MEETUP',
+'초보자도 참여 가능한가요?',
+'등산 경험이 거의 없는데 참여해도 괜찮을까요?',
+'PENDING','Y','N',
+TIMESTAMP '2026-07-03 09:10:00',
+TIMESTAMP '2026-07-03 09:10:00'
+);
+
+INSERT INTO question_ai_analysis VALUES
+(103,'NORMAL',4);
+
+------------------------------------------------------------
+
+INSERT INTO questions VALUES (
+104,3,27,'MEETUP',
+'우천 시 일정은 어떻게 되나요?',
+'비가 오면 일정이 취소되는지 궁금합니다.',
+'ANSWERED','Y','N',
+TIMESTAMP '2026-07-05 11:25:00',
+TIMESTAMP '2026-07-05 12:30:00'
+);
+
+INSERT INTO question_ai_analysis VALUES
+(104,'NORMAL',7);
+
+------------------------------------------------------------
+
+INSERT INTO questions VALUES (
+105,0,35,'ADMIN',
+'닉네임 변경이 되지 않습니다.',
+'프로필에서 닉네임을 변경해도 저장되지 않습니다.',
+'PENDING','Y','N',
+TIMESTAMP '2026-07-07 15:20:00',
+TIMESTAMP '2026-07-07 15:20:00'
+);
+
+INSERT INTO question_ai_analysis VALUES
+(105,'NORMAL',6);
+
+------------------------------------------------------------
+
+INSERT INTO questions VALUES (
+106,0,41,'ADMIN',
+'로그인이 계속 실패합니다.',
+'비밀번호를 정확하게 입력했는데 로그인이 되지 않습니다.',
+'ANSWERED','Y','N',
+TIMESTAMP '2026-07-08 18:20:00',
+TIMESTAMP '2026-07-08 18:55:00'
+);
+
+INSERT INTO question_ai_analysis VALUES
+(106,'NORMAL',11);
+
+------------------------------------------------------------
+-- 발표용 AI 검토 대상
+------------------------------------------------------------
+
+INSERT INTO questions VALUES (
+107,2,25,'MEETUP',
+'운영자가 확인 좀 해주세요.',
+'신청을 여러 번 했는데 계속 오류가 발생합니다. 왜 이런 식으로 운영되는 건가요?',
+'PENDING','Y','N',
+TIMESTAMP '2026-07-10 13:40:00',
+TIMESTAMP '2026-07-10 13:40:00'
+);
+
+INSERT INTO question_ai_analysis VALUES
+(107,'PENDING_REVIEW',74);
+
+------------------------------------------------------------
+
+INSERT INTO questions VALUES (
+108,0,32,'ADMIN',
+'계속 오류만 발생하네요.',
+'며칠째 같은 문제가 반복되고 있습니다. 빠른 확인 부탁드립니다.',
+'PENDING','Y','N',
+TIMESTAMP '2026-07-12 09:30:00',
+TIMESTAMP '2026-07-12 09:30:00'
+);
+
+INSERT INTO question_ai_analysis VALUES
+(108,'PENDING_REVIEW',82);
+
+------------------------------------------------------------
+
+INSERT INTO questions VALUES (
+109,4,29,'MEETUP',
+'친구와 같이 신청 가능한가요?',
+'2명이 함께 신청하려고 하는데 가능한지 문의드립니다.',
+'PENDING','Y','N',
+TIMESTAMP '2026-07-13 16:45:00',
+TIMESTAMP '2026-07-13 16:45:00'
+);
+
+INSERT INTO question_ai_analysis VALUES
+(109,'NORMAL',3);
+
+------------------------------------------------------------
+
+INSERT INTO questions VALUES (
+110,5,17,'MEETUP',
+'모임 장소에 주차 가능한가요?',
+'자차를 이용하려고 하는데 주차장이 있는지 궁금합니다.',
+'PENDING','Y','N',
+TIMESTAMP '2026-07-14 10:05:00',
+TIMESTAMP '2026-07-14 10:05:00'
+);
+
+INSERT INTO question_ai_analysis VALUES
+(110,'NORMAL',4);
+
+
+
+INSERT INTO answers VALUES(
+1,
+102,
+1,
+'안녕하세요. 참가비는 모임 당일 현장에서 결제하시면 됩니다.',
+'Y','N',
+CURRENT_TIMESTAMP,
+CURRENT_TIMESTAMP
+);
+
+INSERT INTO answers VALUES(
+2,
+104,
+1,
+'우천 시에는 전날 공지를 통해 일정 변경 여부를 안내드립니다.',
+'Y','N',
+CURRENT_TIMESTAMP,
+CURRENT_TIMESTAMP
+);
+
+INSERT INTO answers VALUES(
+3,
+106,
+1,
+'비밀번호 재설정 후에도 문제가 발생하면 고객센터로 문의 부탁드립니다.',
+'Y','N',
+CURRENT_TIMESTAMP,
+CURRENT_TIMESTAMP
+);
+
+SELECT member_id, nickname
+FROM members
+ORDER BY member_id;
+
+SELECT member_id, nickname
+FROM members
+ORDER BY member_id;
