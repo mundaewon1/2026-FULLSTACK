@@ -73,7 +73,7 @@ async function findUserById(id){
         const result = await conn.execute(
             `SELECT APP_USER_ID, EMAIL, NICKNAME, MOBILE, MBTI_TYPE_ID, UFILE, CREATED_AT 
              FROM appuser 
-             WHERE EMAIL = :email` 
+             WHERE APP_USER_ID = :id` 
             , {id} 
             , options); //실행
         return result.rows[0]; //결과처리
