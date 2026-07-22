@@ -29,7 +29,7 @@ export default function Layout( { children } ){     //children
                 </li>
                 <li className="nav-item">
                     {/* 회원가입 */}
-                    <Link href="/login">
+                    <Link href="/join">
                         <a className="nav-link" href="#">회원가입</a>
                     </Link>
                 </li>

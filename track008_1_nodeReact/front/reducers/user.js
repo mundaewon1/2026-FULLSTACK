@@ -19,15 +19,15 @@ export const SIGN_UP_REQUEST = 'SIGN_UP_REQUEST'; // 회원가입 요청
 export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS'; // 회원가입 성공
 export const SIGN_UP_FAILURE = 'SIGN_UP_FAILURE'; // 회원가입 실패
 
-export const LOAD_USERS_REQUEST = 'LOG_USERS_FAILURE'; // 사용자 목록 요청
+export const LOAD_USERS_REQUEST = 'LOAD_USERS_REQUEST'; // 사용자 목록 요청
 export const LOAD_USERS_SUCCESS = 'LOAD_USERS_SUCCESS'; // 사용자 목록 성공
 export const LOAD_USERS_FAILURE = 'LOAD_USERS_FAILURE'; // 사용자 목록 실패
 
-export const UPDATE_NICKNAME_REQUEST = 'UPDATE_NICKNAME_FAILURE'; // 닉네임 수정 목록
+export const UPDATE_NICKNAME_REQUEST = 'UPDATE_NICKNAME_REQUEST'; // 닉네임 수정 목록
 export const UPDATE_NICKNAME_SUCCESS = 'UPDATE_NICKNAME_SUCCESS'; // 닉네임 수정 성공
 export const UPDATE_NICKNAME_FAILURE = 'UPDATE_NICKNAME_FAILURE'; // 닉네임 수정 실패
 
-export const DELETE_USER_REQUEST = 'DELETE_USER_FAILURE'; // 사용자삭제 목록
+export const DELETE_USER_REQUEST = 'DELETE_USER_REQUEST'; // 사용자삭제 목록
 export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS'; // 사용자삭제 성공
 export const DELETE_USER_FAILURE = 'DELETE_USER_FAILURE'; // 사용자삭제 실패
 

@@ -156,7 +156,7 @@ export function* deleteUser(action){
     }
 }
 function* watchDeleteUser(){
-    yield takeLatest( DELETE_USER_REQUEST , loadUsers );
+    yield takeLatest( DELETE_USER_REQUEST , deleteUser );
     // DELETE_USER_REQUEST 액션발생 -> 여러번요청시 가장 마지막 요청처리 1개
     // return { ...state, isLoading: true , error: null};
 }
