@@ -16,7 +16,7 @@ export default function LoginPage(){
    const router = useRouter();
    const {me, isLoading, error} = useSelector( (state)=> state.user );
    // form 연결
-   const [email, setEmail]       = useState('');   // email 변수, email 셋팅함수
+   const [email, setEmail]       = useState('');   // email 현재 값(변수), email 셋팅함수
    const [password, setPassword] = useState('');
 
    //1-1. 회원가입했다고하면 알림창
