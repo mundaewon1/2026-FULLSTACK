@@ -12,7 +12,7 @@ public class UserDto {
 		private String  email;
 		private String  password;
 		private String  nickname;
-		private String  moblie;
+		private String  mobile;
 		private Integer mbtitype;
 	}
 	
