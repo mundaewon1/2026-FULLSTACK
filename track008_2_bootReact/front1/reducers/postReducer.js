@@ -30,39 +30,39 @@ const postReducer=createSlice({
             state.success = false;
         },
         // --- 단건 게시글 ---
-        fetchPostsDetailRequest: (state)=>{
+        fetchPostDetailRequest: (state)=>{
             state.loading = true;
             state.error   = null;
             state.success = false;
         },
-        fetchPostsDetailSuccess: (state , action)=>{
+        fetchPostDetailSuccess: (state , action)=>{
             state.loading     = false;
             state.currentPost = action.payload;
             state.success     = true;
         },
-        fetchPostsDetailFailure: (state , action)=>{
+        fetchPostDetailFailure: (state , action)=>{
             state.loading = false;
             state.error   = action.payload;
             state.success = false;
         },
         // --- 게시글 작성 ---
-        createPostsRequest: (state)=>{
+        createPostRequest: (state)=>{
             state.loading = true;
             state.error   = null;
             state.success = false;
         },
-        createPostsSuccess: (state , action)=>{
+        createPostSuccess: (state , action)=>{
             state.loading = false;
             state.posts   = [action.payload,   ...state.posts]; // 새글을 목록상단추가
             state.success = true;
         },
-        createPostsFailure: (state , action)=>{
+        createPostFailure: (state , action)=>{
             state.loading = false;
             state.error   = action.payload;
             state.success = false;
         },
         // --- 게시글 수정 ---
-        updatePostsRequest: (state)=>{
+        updatePostRequest: (state)=>{
             state.loading = true;
             state.error   = null;
             state.success = false;
@@ -75,24 +75,24 @@ const postReducer=createSlice({
             state.currentPost = action.payload;
             state.success = true;
         },
-        updatePostsFailure: (state , action)=>{
+        updatePostFailure: (state , action)=>{
             state.loading = false;
             state.error   = action.payload;
             state.success = false;
         },
         // --- 게시글 삭제 ---
-        deletePostsRequest: (state)=>{
+        deletePostRequest: (state)=>{
             state.loading = true;
             state.error   = null;
             state.success = false;
         },
-        deletePostsSuccess: (state , action)=>{
+        deletePostSuccess: (state , action)=>{
             state.loading = false;
             // 삭제된 게시글의 id받아서 목록에서 제외
             state.posts   = state.posts.filter(post=> post.id !== action.payload);
             state.success = true;
         },
-        deletePostsFailure: (state , action)=>{
+        deletePostFailure: (state , action)=>{
             state.loading = false;
             state.error   = action.payload;
             state.success = false;
@@ -108,10 +108,10 @@ const postReducer=createSlice({
 });
 
 export const {fetchPostsRequest , fetchPostsSuccess , fetchPostsFailure , 
-        fetchPostsDetailRequest , fetchPostsDetailSuccess , fetchPostsDetailFailure , 
-        createPostsRequest , createPostsSuccess , createPostsFailure , 
-        updatePostsRequest , updatePostsSuccess , updatePostsFailure , 
-        deletePostsRequest , deletePostsSuccess , deletePostsFailure , 
+        fetchPostDetailRequest , fetchPostDetailSuccess , fetchPostDetailFailure , 
+        createPostRequest , createPostSuccess , createPostFailure , 
+        updatePostRequest , updatePostSuccess , updatePostFailure , 
+        deletePostRequest , deletePostSuccess , deletePostFailure , 
         resetUserState // 초기화
 } = postReducer.actions;
 export default postReducer.reducer;
