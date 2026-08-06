@@ -426,3 +426,53 @@ deleted                                   2  like
 6) 팔로우
 
 front2 - 프로젝트복사하기
+
+■ 과정명   : [취업기업확대]AI활용 풀스택(프론트엔드,백엔드)부트캠프(자바,파이썬,플러터)
+■ 훈련과목 : (비NCS)프로젝트(완성된 웹서비스 플랫폼 프로젝트 리뉴얼)
+> boot + security + jwt + redis / jpa( mybatis ) +oracle / react + next     → aws
+
+[4] Dto / Service
+- table    ->   mapper      (dto)  ->  service   ->  controller
+- @Entity  ->   repository  (dto)  ->  service   ->  controller
+
+■ 멤버관리
+회원가입   ( 이메일중복검사, 닉네임중복검사 )
+↓
+로그인
+↓
+마이페이지 (닉네임변경, 프로필이미지변경, 회원탈퇴, 로그아웃)  ※ 팔로워 / 팔로잉
+
+1) UserDto : UserRequestDto  /  UserResponseDto
+UserRequestDto  < email, password, nickname, ☆image (Multipart 빠짐)  /  provider, moblie, mbtitype >
+UserResponseDto < id, email, role    , nickname, ufile  / provider, moblie, mbtitype  >
+
+2) LoginRequest < email, password, provider >
+
+■ 게시글관리
+게시글작성
+↓
+게시글목록 ( 전체글 / 좋아요한글 / 내글+리트윗 )
+※ 1. 각세부내용 / 수정 / 삭제
+※ 2. 좋아요 / 리트윗 / 댓글
+
+
+[5] RestController
+
+> Ver2 . frontend
+
+1. 프로젝트만들기 (npm init)
+```
+mkdir front2
+cd    front2
+npm init
+```
+
+2. 프로그램 설치 (npm install)
+```
+npm install
+```
+
+3. 개발
+1) reducer
+2) saga
+3) page

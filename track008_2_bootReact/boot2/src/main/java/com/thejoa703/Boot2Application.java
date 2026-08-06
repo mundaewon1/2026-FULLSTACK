@@ -11,3 +11,6 @@ public class Boot2Application {
 	}
 
 }
+/*
+http://localhost:8080/swagger-ui/index.html
+*/
