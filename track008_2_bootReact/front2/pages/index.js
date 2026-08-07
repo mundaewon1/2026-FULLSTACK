@@ -8,12 +8,12 @@ import EditPostModal from '../components/EditPostModal';
 
 export default function Home(){
     const dispatch = useDispatch();
-    //1. 유저정보가져오기   - state.auth
-    //2. 게시글정보가져오기 - state.post
+    const { user } = useSelector( (state)=>state.auth);
     const { posts, loading, error} = useSelector( (state)=>state.post);
 
     //수정모달 : isEditModalVisible , setIsEditModalVisible
     const [isEditModalVisible , setIsEditModalVisible] = useState(false);
+    const [uploadFiles, setUploadFiles] = useState([]);
     //수정할 글 : editPost , setEditPost
     const [editPost , setEditPost] = useState(null);
     
@@ -21,11 +21,20 @@ export default function Home(){
     const handleEdit = (post)=>{
         setEditPost(post);   // 수정글셋팅
         setIsEditModalVisible(true);  // 수정화면 보이기
+        setUploadFiles([]);
     };
-    
+    // ##2. saga 넘기는 데이터 확인 { userId, postId, dto, files }
     const handleEditSubmit = (values)=>{
         dispatch( updatePostRequest({ 
-            postId: editPost.id , dto:{ content:values.content }
+            userId: user?.id ,
+            postId: editPost.id , 
+             dto:{
+                content: values.content,
+                hashtags: Array.isArray(values.hashtags)
+                ? values.hashtags.join(",")
+                : values.hashtags,
+            } ,
+             files: uploadFiles
         }) );  // 수정기능 후
         setIsEditModalVisible(false); // 화면안보이기 
         setEditPost(null);
@@ -52,6 +61,8 @@ export default function Home(){
                 onCancel={()=> setIsEditModalVisible(false)}
                 editPost={editPost}
                 onSubmit={handleEditSubmit}    
+                uploadFiles={uploadFiles}
+                setUploadFiles={setUploadFiles}
             />
         </>
     );
