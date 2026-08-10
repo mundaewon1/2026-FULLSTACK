@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.thejoa703.dto.PostDto.PostRequestDto;
 import com.thejoa703.dto.PostDto.PostResponseDto;
 import com.thejoa703.entity.Post;
+import com.thejoa703.service.AuthUserJwtService;
 import com.thejoa703.service.PostService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -32,11 +34,14 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 //@CrossOrigin(origins="*") 
 public class PostController {
+	
 	private final PostService postService;
+	private final AuthUserJwtService authUserJwtService;  //###
 	
 	@Operation(summary = "게시글작성" , description = "특정유저 ID와 내용을 받아 게시글을 작성합니다.")
 	@PostMapping( consumes= MediaType.MULTIPART_FORM_DATA_VALUE )
 	public ResponseEntity<PostResponseDto>  createPost(
+			Authentication		authentication,
 			@Parameter(description = "작성자 사용자 ID") @RequestParam("userId")  Long userId,
 			@ModelAttribute PostRequestDto  dto ,   // multipart/form-data
 			@Parameter(description="업로드할 이미지 파일 리스트")     // swagger
@@ -72,19 +77,23 @@ public class PostController {
 	@Operation(summary = "게시글 수정" , description = "게시글 수정시")   // 수정 put(전체데이트 수정) , patch( 데이터 일부분수정)
 	@PatchMapping(value="/{postId}" , consumes= MediaType.MULTIPART_FORM_DATA_VALUE)   // Put ( 리소스의 전체 교체 ) / Patch ( 부분수정 )
 	public ResponseEntity<PostResponseDto>  getUpdatePost(
-			@Parameter(description = "작성자 사용자 ID") @RequestParam("userId")  Long userId,
+			Authentication authentication,
+			//@Parameter(description = "작성자 사용자 ID") @RequestParam("userId")  Long userId,
 			@Parameter(description = "수정할 게시글 ID") @PathVariable(name="postId")  Long postId,
 			@ModelAttribute PostRequestDto  dto ,   // 게시글내용 + 댓글
 			@Parameter(description="수정시 업로드할 이미지 파일 리스트")     // swagger
 			@RequestPart(name="files" , required=false) List<MultipartFile> files
 	){		
+		Long userId = authUserJwtService.getCurrentUserId(authentication);
 		return  ResponseEntity.ok(  postService.updatePost( userId, postId, dto, files) );  // 200
 	} 	
 	
 	@Operation(summary = "게시글 삭제" , description = "게시글 삭제시")   // 수정 put(전체데이트 수정) , patch( 데이터 일부분수정)
 	@DeleteMapping("/{id}")   //ctrl + shift + o
-	public ResponseEntity<Long>  deletePost( @PathVariable("id")  Long id ){
-		postService.deletePost(id);
+	public ResponseEntity<Long>  deletePost(
+			Authentication authentication, @PathVariable("id") Long id){
+		Long userId = authUserJwtService.getCurrentUserId(authentication);
+		postService.deletePost(userId, id);
 		return  ResponseEntity.ok(id);  // 200
 	} 
 	 
