@@ -636,3 +636,28 @@ STEP3)
 ```json
    HMACSHA256(base64UrlEncode(header) + "." + base64UrlEncode(payload), secret)
 ```
+
+
+2. react
+1) 폴더만들기
+2) 프로젝트 설치
+3) reducer -> saga -> page
+4) jwt 사용
+front3
+  ㄴ api/axios.js
+  ㄴ pages
+      ㄴ signup.js
+      ㄴ login.js
+      ㄴ mypage.js
+
+3. social 개발자사이트 - 키찾기
+> kakao 개발자 , naver 개발자 , google 개발자
+> boot의 .env 파일 바꾸기
+
+```
+mkdir front3      -- 폴더만들기
+cd    front3      -- 폴더이동
+
+front2 프로젝트 .next / node_modules 빼고 안에 콘텐츠 넣기
+npm   install
+```
