@@ -1,20 +1,42 @@
+INSERT INTO member_report_status
+    (report_status_id, status_code, status_name)
+VALUES
+    (1, 'ACTIVE', '정상');
 
+INSERT INTO member_report_status
+    (report_status_id, status_code, status_name)
+VALUES
+    (2, 'WARNING', '주의');
 
-commit;
+INSERT INTO member_report_status
+    (report_status_id, status_code, status_name)
+VALUES
+    (3, 'DANGER', '위험');
+    
+INSERT INTO interest (interest_id, interest_name) VALUES (1, '운동');
+INSERT INTO interest (interest_id, interest_name) VALUES (2, '여행');
+INSERT INTO interest (interest_id, interest_name) VALUES (3, '게임');
+INSERT INTO interest (interest_id, interest_name) VALUES (4, '독서');
+INSERT INTO interest (interest_id, interest_name) VALUES (5, '맛집');
+INSERT INTO interest (interest_id, interest_name) VALUES (6, '영화');
+INSERT INTO interest (interest_id, interest_name) VALUES (7, '음악');
+INSERT INTO interest (interest_id, interest_name) VALUES (8, '요리');    
 
-ALTER SEQUENCE question_seq RESTART START WITH 1;
+COMMIT;
 
+UPDATE MEMBERS
+SET MEMBER_TYPE_ID = 3
+WHERE MEMBER_TYPE_ID = '1';
+
+SELECT USER FROM dual;
 SELECT table_name FROM user_tables; -- 테이블 목록
-select * from questions;
-select * from answers;
-SELECT * FROM question_ai_analysis;
 create sequence question_seq;
 create sequence answer_seq;
 create sequence notification_seq;
 
 SELECT * FROM MEMBERS;
 
-SELECT * FROM notifications;
+SELECT * FROM questions;
 
 update question_ai_analysis set analysis_status='NORMAL' where analysis_status='PENDING_REVIEW';
 
@@ -29,7 +51,7 @@ CREATE TABLE questions (
     category VARCHAR2(10) DEFAULT 'MEETUP' CHECK (category IN ('MEETUP','ADMIN')), -- 질문 출처 구분 (모임/관리자)
     title VARCHAR2(200) NOT NULL, -- 질문 제목
     content CLOB NOT NULL, -- 질문 내용
-    status VARCHAR2(20) DEFAULT 'PENDING' CHECK (status IN ('PENDING','ANSWERED')), -- 질문 상태 (처리대기/처리완료)
+    qna_status VARCHAR2(20) DEFAULT 'PENDING' CHECK (qna_status IN ('PENDING','ANSWERED')), -- 질문 상태 (처리대기/처리완료)
     is_public CHAR(1) DEFAULT 'Y' CHECK (is_public IN ('Y','N')), -- 공개 여부 (Y=공개, N=비공개)
     delete_yn CHAR(1) DEFAULT 'N' CHECK (delete_yn IN ('Y','N')), -- 삭제 여부 (N=정상, Y=삭제)
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 생성일시
@@ -46,6 +68,7 @@ CREATE TABLE question_ai_analysis (
     question_id NUMBER PRIMARY KEY, -- 질문 PK (questions와 1:1 관계)
     analysis_status VARCHAR2(20) DEFAULT 'NORMAL' CHECK (analysis_status IN ('NORMAL', 'PENDING_REVIEW', 'REJECTED')), -- AI 분석 상태
     aggression_score NUMBER(5,2), -- AI 공격성 점수 (0~100)
+    ai_category VARCHAR2(20) CHECK (ai_category IN ('LOGIN', 'PAYMENT', 'ACCOUNT', 'REPORT', 'BUG', 'OTHER')), -- AI 자동분류 결과
     CONSTRAINT fk_question_ai_analysis FOREIGN KEY (question_id) REFERENCES questions(question_id) ON DELETE CASCADE
 );
 
@@ -56,8 +79,11 @@ CREATE TABLE answers (
     content CLOB NOT NULL, -- 답변 내용
     is_public CHAR(1) DEFAULT 'Y' CHECK (is_public IN ('Y','N')), -- 공개 여부 (Y=공개, N=비공개)
     delete_yn CHAR(1) DEFAULT 'N' CHECK (delete_yn IN ('Y','N')), -- 삭제 여부 (N=정상, Y=삭제)
+    rating NUMBER(1), -- 답변 만족도 점수 (1~5)
+    feedback VARCHAR2(1000), -- 답변 만족도 의견
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 생성일시
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 수정일시
+    CONSTRAINT chk_answers_rating CHECK (rating IS NULL OR rating BETWEEN 1 AND 5), -- 평점은 NULL 또는 1~5
     CONSTRAINT fk_answer_question FOREIGN KEY (question_id) REFERENCES questions(question_id), -- 질문 FK
     CONSTRAINT fk_answer_member FOREIGN KEY (member_id) REFERENCES members(member_id) -- 작성자 FK
 );
