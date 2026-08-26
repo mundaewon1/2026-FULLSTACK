@@ -1,3 +1,15 @@
+select * from sidos;
+SELECT
+    question_id,
+    parent_id,
+    member_id,
+    category,
+    title,
+    delete_yn,
+    is_public
+FROM questions
+ORDER BY question_id DESC;
+
 INSERT INTO member_report_status
     (report_status_id, status_code, status_name)
 VALUES
@@ -12,7 +24,6 @@ INSERT INTO member_report_status
     (report_status_id, status_code, status_name)
 VALUES
     (3, 'DANGER', '위험');
-    
 INSERT INTO interest (interest_id, interest_name) VALUES (1, '운동');
 INSERT INTO interest (interest_id, interest_name) VALUES (2, '여행');
 INSERT INTO interest (interest_id, interest_name) VALUES (3, '게임');
@@ -25,24 +36,20 @@ INSERT INTO interest (interest_id, interest_name) VALUES (8, '요리');
 COMMIT;
 
 UPDATE MEMBERS
-SET MEMBER_TYPE_ID = 3
-WHERE MEMBER_TYPE_ID = '1';
+SET status_ID = 1
+WHERE status_ID = '3';
 
-SELECT USER FROM dual;
+SELECT * FROM MEMBERS;
+SELECT * FROM questions;
+
+SELECT USER FROM dual; -- 오라클 접속 계정
 SELECT table_name FROM user_tables; -- 테이블 목록
+
+
 create sequence question_seq;
 create sequence answer_seq;
 create sequence notification_seq;
-
-SELECT * FROM MEMBERS;
-
-SELECT * FROM questions;
-
-update question_ai_analysis set analysis_status='NORMAL' where analysis_status='PENDING_REVIEW';
-
-update members set member_type_id = 3 where email='1@1';
-
-delete from questions;
+CREATE SEQUENCE question_image_seq;
 
 CREATE TABLE questions (
     question_id NUMBER PRIMARY KEY, -- 질문 고유 ID (PK)
@@ -104,6 +111,30 @@ CREATE TABLE notifications (
     CONSTRAINT fk_notification_question FOREIGN KEY (question_id) REFERENCES questions(question_id), -- 문의 FK
     CONSTRAINT fk_notification_member FOREIGN KEY (member_id) REFERENCES members(member_id) -- 회원 FK
 );
+
+CREATE TABLE question_images (
+    image_id NUMBER PRIMARY KEY, -- 문의 이미지 고유 ID (PK)
+    question_id NUMBER NOT NULL, -- 연결된 문의 ID
+    original_name VARCHAR2(255) NOT NULL, -- 원본 파일명
+    stored_name VARCHAR2(255) NOT NULL, -- 서버에 저장된 파일명
+    image_path VARCHAR2(500) NOT NULL, -- 이미지 저장 경로
+    image_size NUMBER, -- 이미지 크기(byte)
+    content_type VARCHAR2(100), -- 이미지 타입 (image/jpeg, image/png 등)
+    delete_yn CHAR(1) DEFAULT 'N' CHECK (delete_yn IN ('Y','N')), -- 삭제 여부
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 생성일시
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 수정일시
+
+    CONSTRAINT fk_question_image_question
+        FOREIGN KEY (question_id)
+        REFERENCES questions(question_id)
+);
+CREATE OR REPLACE TRIGGER trg_question_images_updated
+BEFORE UPDATE ON question_images
+FOR EACH ROW
+BEGIN
+    :NEW.updated_at := CURRENT_TIMESTAMP;
+END;
+/
 
 --------------------------------------------------------------------------------------------------------------
 
