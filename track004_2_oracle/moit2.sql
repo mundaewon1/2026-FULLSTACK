@@ -39,7 +39,7 @@ UPDATE MEMBERS
 SET status_ID = 1
 WHERE status_ID = '3';
 
-SELECT * FROM MEMBERS;
+SELECT * FROM question_images;
 SELECT * FROM questions;
 
 SELECT USER FROM dual; -- 오라클 접속 계정
@@ -73,7 +73,7 @@ END;
 
 CREATE TABLE question_ai_analysis (
     question_id NUMBER PRIMARY KEY, -- 질문 PK (questions와 1:1 관계)
-    analysis_status VARCHAR2(20) DEFAULT 'NORMAL' CHECK (analysis_status IN ('NORMAL', 'PENDING_REVIEW', 'REJECTED')), -- AI 분석 상태
+    analysis_status VARCHAR2(20) DEFAULT 'NORMAL' CHECK (analysis_status IN ('NORMAL', 'PENDING_REVIEW')), -- AI 분석 상태
     aggression_score NUMBER(5,2), -- AI 공격성 점수 (0~100)
     ai_category VARCHAR2(20) CHECK (ai_category IN ('LOGIN', 'PAYMENT', 'ACCOUNT', 'REPORT', 'BUG', 'OTHER')), -- AI 자동분류 결과
     CONSTRAINT fk_question_ai_analysis FOREIGN KEY (question_id) REFERENCES questions(question_id) ON DELETE CASCADE

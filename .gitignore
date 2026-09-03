@@ -16,6 +16,10 @@ Servers/
 .idea/
 *.iml
 
+# AWS SSH 키 파일
+*.pem
+*.csv
+
 # OS별 임시파일
 *.DS_Store
 Thumbs.db
