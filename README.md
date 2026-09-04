@@ -22,7 +22,7 @@ style="width:90px" />
 |-|-|
 |NAME|문대원|
 |EMAIL|less40@naver.com|
-|GITHUB|https://github.com/sally03915/2026-AI-FULLSTACK-1|
+|GITHUB|https://github.com/mundaewon1/2026-FULLSTACK|
 
 <br/>
 <br/>
