@@ -211,7 +211,7 @@ sudo chmod  644     /home/ubuntu/app/back/build/libs/uploads/*   # 이미생성
   sudo swapon /swapfile
   echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
   free -h
-  
+
   # sudo fallocate -l 2G /swapfile  ←  2GB 파일생성
   # sudo chmod 600 /swapfile  ←  권한유저(rwx)
   # sudo mkswap /swapfile  ←  스왑초기화
