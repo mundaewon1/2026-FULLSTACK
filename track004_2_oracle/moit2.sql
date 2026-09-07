@@ -41,10 +41,9 @@ WHERE status_ID = '3';
 
 SELECT * FROM question_images;
 SELECT * FROM questions;
-
+delete from questions;
 SELECT USER FROM dual; -- 오라클 접속 계정
 SELECT table_name FROM user_tables; -- 테이블 목록
-
 
 create sequence question_seq;
 create sequence answer_seq;
