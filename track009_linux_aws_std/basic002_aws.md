@@ -6,21 +6,21 @@
 2. public ip
   > 3.35.233.110
 3. ssh 클라이언트
-  > ssh -i "thejoa703.pem" ubuntu@ec2-3-35-233-110.ap-northeast-2.compute.amazonaws.com
+  > ssh -i "mundaewon30.pem" ubuntu@ec2-15-164-129-197.ap-northeast-2.compute.amazonaws.com
 
   ※ thejoa703.pem  보관주의
   ```bash
-  chmod 400 "thejoa703.pem"     # 소유자(4: r-- 읽기만)  그룹(---)  다른사람(---) rwx
+  chmod 400 "mundaewon30.pem"     # 소유자(4: r-- 읽기만)  그룹(---)  다른사람(---) rwx
   ```
   - ctrl + ` = 터미널창
   ```
     # 1. 상속 권한 완전히 제거
-    icacls "thejoa703.pem" /inheritance:r /grant:r "$($env:USERNAME):(R)"
+    icacls "mundaewon30.pem" /inheritance:r /grant:r "$($env:USERNAME):(R)"
 
     # 2. 혹시 남아있을 수 있는 다른 사용자 권한 강제 삭제
-    icacls "thejoa703.pem" /remove "NT AUTHORITY\Authenticated Users"
-    icacls "thejoa703.pem" /remove "BUILTIN\Users"
-    icacls "thejoa703.pem" /remove "NT AUTHORITY\SYSTEM"
+    icacls "mundaewon30.pem" /remove "NT AUTHORITY\Authenticated Users"
+    icacls "mundaewon30.pem" /remove "BUILTIN\Users"
+    icacls "mundaewon30.pem" /remove "NT AUTHORITY\SYSTEM"
   ``` 
 
 4. EC2에서 nginx
@@ -49,7 +49,7 @@ sudo vi   /etc/nginx/sites-available/default
 
 server {
     listen 80;
-    server_name 3.35.233.110;
+    server_name 15.164.129.197;
 
     # 프론트엔드 (Next.js SSR 서버)
     location / {
@@ -149,6 +149,7 @@ sudo systemctl restart nginx
     3) 암호화설정 - 기본키 그대로
     ```
     132058735336.dkr.ecr.ap-northeast-2.amazonaws.com/thejoa703
+    132058735336.dkr.ecr.ap-northeast-2.amazonaws.com/moit-v3
     ```
 
 6. 필수패지키 설정
@@ -239,7 +240,7 @@ sudo docker run -d --name oracle-xe -p 1521:1521 -p 5500:5500 -e ORACLE_PASSWORD
 
         CREATE USER boot IDENTIFIED BY react;
         GRANT CONNECT, RESOURCE TO boot;
-        exit;
+
 
         # 3. 새로 만든 scott 계정으로 접속 확인
         sudo docker exec -it oracle-xe sqlplus boot/react@XE
