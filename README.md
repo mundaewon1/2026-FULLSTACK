@@ -19,7 +19,7 @@
 ---
 
 <img src="track001_git/me.png" alt="사진"
-style="width:150px" />
+style="width:140px" />
 
 |||
 |-|-|
