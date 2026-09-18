@@ -51,6 +51,8 @@ style="width:90px" />
 |DJANGO	|MTV 패턴과 ORM 구조 이해. ***보안과 인증 시스템 구축 역량.**
 |FLUTTER	|위젯 트리와 렌더링 파이프라인 이해. **Cross-Platform 개발로 생산성 확보.**
 
+<br/>
+
 ---
 ## 📚 6개월 학습 여정
 ---
