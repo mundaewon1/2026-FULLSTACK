@@ -39,20 +39,7 @@ style="width:90px" />
 - 협업을 위한 GitHub **워크플로우 익히기**
 - AI 도구와 함께하는 **개발환경 체험**
 
-|기술스택|연결된 CS 역량 및 실무 활용 능력|
-|-|-|
-|Java|객체지향 프로그래밍(OOP)과 JVM 메모리 구조 이해. **Java 기반 웹 개발 경험.**|
-|JSP|서버-클라이언트 구조와 렌더링 과정 이해. **MVC 패턴 기반 웹 구현 경험.**|
-|Spring|IoC/DI, AOP 등 핵심 아키텍처 개념 이해. **웹 애플리케이션 개발 경험.**|
-|Spring Boot|자동 설정과 REST API 구조 이해. **백엔드 개발 및 API 구현 경험.**|
-|Oracle / MySQL + MyBatis + JPA|트랜잭션, 인덱스, 정규화 등 DB 기본 개념 이해. **SQL 및 ORM 활용 경험.**|
-|React|컴포넌트 구조와 상태 관리 이해. **컴포넌트 기반 UI 구현 경험.**|
-|Linux + AWS(EC2)|Linux 환경과 기본적인 서버 구조 이해. **AWS EC2 배포 경험.**|
-|Git & GitHub|버전 관리와 브랜치 구조 이해. **Branch, Pull Request, 충돌 해결 등 협업 경험.**|
-|HTML + CSS + JS / jQuery + AJAX|DOM, 이벤트 처리와 브라우저 동작 이해. **웹 UI 및 비동기 통신 구현 경험.**|
-|Python|자료구조와 알고리즘 기초 이해. **데이터 처리 및 분석 경험.**|
-|Django|MTV 패턴과 ORM 구조 이해. **웹 애플리케이션 개발 경험.**|
-|Flutter|위젯 구조와 렌더링 과정 이해. **크로스플랫폼 앱 개발 경험.**|
+|기술스택|경험 및 활용| |-|-| |Java|객체지향 프로그래밍 기반 백엔드 개발| |JSP|MVC 구조 기반 웹 페이지 구현| |Spring / Spring Boot|IoC/DI 기반 백엔드 및 REST API 구현| |Spring Security|인증·인가 및 접근 제어| |JWT / Redis|Access / Refresh Token 인증 및 토큰 관리| |JPA / MyBatis|ORM 및 SQL 기반 데이터 처리| |Oracle / MySQL|관계형 데이터베이스 설계 및 SQL 활용| |React / Next.js|컴포넌트 기반 UI 및 REST API 연동| |Redux-Saga / Axios|비동기 통신 및 상태 관리| |Ant Design|Form / Modal 등 UI 컴포넌트 활용| |HTML / CSS / JavaScript / jQuery / AJAX|웹 기본 구조 및 동적 기능 구현| |Python / Django|데이터 처리 및 웹 API 연동| |Pandas / Chart.js|데이터 가공 및 시각화| |Linux / AWS EC2|Linux 환경 및 서버 배포| |Nginx|Reverse Proxy 및 서버 요청 관리| |Git / GitHub|버전 관리 및 브랜치 기반 협업| |Swagger|REST API 명세 및 문서화| |LLM API|외부 AI API 연동 및 데이터 처리|
 
 <br/>
 
