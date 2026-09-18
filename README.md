@@ -1,4 +1,4 @@
-## 👨‍💻 문대원 | Full-Stack Developer
+## 💻 문대원 | Full-Stack Developer
 ---
 > 안녕하세요.
 > **사용자의 흐름을 이해하고, 안정적으로 동작하는 서비스를 만드는 개발자입니다.**
