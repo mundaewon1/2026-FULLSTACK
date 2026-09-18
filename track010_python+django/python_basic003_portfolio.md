@@ -61,7 +61,7 @@ python -c "import requests; print(requests.__version__)"
     <meta charset="UTF-8">
     <title>파이썬 데이터 분석 대시보드</title>
     <!-- 💡 [필기] 시각화 그래프 작성을 위해 로드한 CDN 라이브러리 이름은? -->
-    <script src="https://cdn.jsdelivr.net/npm/____________________"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         .dashboard-container { width: 800px; margin: 40px auto; font-family: Arial, sans-serif; }
         .summary-cards { display: flex; justify-content: space-between; gap: 15px; margin-bottom: 30px; }
