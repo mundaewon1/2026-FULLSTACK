@@ -51,7 +51,7 @@ style="width:90px" />
 |Git & GitHub	|분산형 저장소 개념 이해, 브랜치 전략 및 충돌 해결 능력. **CI/CD 흐름과 연계 가능.**
 |HTML + CSS + JS / jQuery + AJAX	|DOM 트리, 이벤트 루프 등 브라우저 동작 이해. **접근성, SEO, 비동기 통신 활용 능력.**
 |Python	|자료구조, 알고리즘, 메모리 관리 등 CS 기초 활용. **데이터 분석, 자동화, AI 모델링 강점.**
-|Django	|MTV 패턴과 ORM 구조 이해. ***보안과 인증 시스템 구축 역량.**
+|Django	|MTV 패턴과 ORM 구조 이해. **보안과 인증 시스템 구축 역량.**
 |Flutter	|위젯 트리와 렌더링 파이프라인 이해. **Cross-Platform 개발로 생산성 확보.**
 
 <br/>
