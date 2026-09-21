@@ -18,8 +18,8 @@
 ## 📬 Contact & Links
 ---
 
-<img src="me1.png" alt="사진"
-style="width:90px" />
+<img src="track001_git/me.png" alt="사진"
+style="width:140px" />
 
 |||
 |-|-|
