@@ -20,6 +20,7 @@ npx  playwright open  http://naver.com
 
 ### 2단계: 자동 로그인 세션(쿠키) 만들기
 > save_login.py
+
 ```bash
 import os
 from playwright.sync_api import sync_playwright
@@ -62,6 +63,8 @@ with sync_playwright() as p:   # 사용후에 반드시 닫기 or 해제가 필�
 5. 로그인 정보 기록이 state.json 에 남음
 
 ### 3. 키워드에 맞춘 지원에이전트 작성
+> agent.py
+
 ```bash
 import os
 import random
