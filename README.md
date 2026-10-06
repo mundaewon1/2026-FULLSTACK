@@ -1,4 +1,4 @@
-## ◼️ 문대원 | Full-Stack Developer
+## ◼️ 문대원 | Full-Stack Developer 
 ---
 > 안녕하세요.  
 > **서비스가 동작하는 과정을 이해하고, 문제의 원인을 찾아가는 개발자입니다.**  
