@@ -16,7 +16,6 @@
 
 
 ## 📬 Contact & Links
----
 
 <img src="track001_git/me.png" alt="사진"
 style="width:140px" />
@@ -32,7 +31,6 @@ style="width:140px" />
 
 ---
 ## 🎯 Goals
----
 
 - GitHub의 **핵심 기능** 이해 및 실습
 - Markdown을 활용한 **문서화 능력 향상**
